@@ -1,0 +1,226 @@
+@import "../../../styles/colors";
+
+.multi-list-panel {
+  float: left;
+  width: 256px;
+  height: 100%;
+  background-color: $component--grey-03;
+
+  .menu-btn:hover {
+    cursor: pointer;
+  }
+
+  .header {
+    display: table;
+    width: 100%;
+    height: 64px;
+    position: relative;
+    color: $white;
+    background-color: $component--grey-01;
+
+    .inner {
+      display: table-row;
+      width: 100%;
+    }
+    
+    .select-links li a {
+      font-size: 0.8rem;
+      padding: 0;
+      height: 20px;
+      line-height: 2;
+    }
+
+    h2 {
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      width: 70%;
+      text-align: center;
+    }
+    
+    span {
+      font-size: 0.8rem;
+      vertical-align: middle;
+      width: 30%;
+      display: table-cell;
+    }
+
+    .back-button {
+      width: 44px;
+      padding-right: 8px;
+      padding-top: 3px;
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%;
+      font-size: 16px;
+      text-align: right;
+
+      i {
+        width: 24px;
+        float: right;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .list {
+    height: calc(100% - 158px);
+    overflow: hidden;
+    top: 160px;
+    overflow-y: auto;
+    font-size: 16px;
+    font-weight: 300;
+    position: absolute;
+
+    .list-item {
+      line-height: normal;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      height: 64px;
+      display: table;
+      width: 100%;
+      &.disabled {
+        color: #999999;
+      }
+
+      .next-link {
+        height: 100%;
+        display: table-cell;
+        width: 72px;
+        vertical-align: middle;
+        cursor: pointer;
+        line-height: 63px;
+
+        &:hover {
+          background-color: $component--grey-00;
+        }
+      }
+
+      .select-control {
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        width: 75%;
+      }
+
+      &:hover {
+        background-color: $component--grey-01;
+      }
+
+      .inner {
+        display: table-row;
+        width: 100%;
+      }
+
+      .multi-list-panel--li-select-control,
+      .input-field,
+      .title {
+        cursor: pointer;
+      }
+
+      [type="checkbox"] + label {
+        position: relative;
+        display: table-cell;
+        height: 20px;
+        line-height: 48px;
+        font-size: 1rem;
+        color: $white;
+      }
+
+      [type="checkbox"].filled-in:checked:not(.disabled) + label:after {
+        border: 2px solid $white;
+        background-color: $white;
+      }
+      [type="checkbox"] + label {
+        color: $white;
+      }
+
+      [type="checkbox"].filled-in:checked + label:after {
+        border: 2px solid $white;
+        background-color: $white;
+      }
+
+      [type="checkbox"].filled-in:checked + label:before {
+        border-right: 2px solid $component--grey-03;
+        border-bottom: 2px solid $component--grey-03;
+        transition: none;
+      }
+
+      [type="checkbox"].filled-in + label.state-indeterminate:after {
+        background-color: $white;
+      }
+
+      [type="checkbox"].filled-in + label.state-indeterminate:before {
+        border: 1px solid $component--grey-00;
+        border-radius: 0;
+        height: 0;
+        left: 0;
+        margin: 9px 4px;
+        top: 0;
+        transform: rotateZ(0deg);
+        width: 12px;
+        transition: none;
+      }
+
+      [type="checkbox"].filled-in:not(:checked):not(.disabled) + label:after {
+        border: 2px solid $white;
+      }
+
+      [type="checkbox"].filled-in.disabled:not(:checked) + label:after {
+        border: 2px solid #949494;
+        background-color: transparent;
+      }
+
+      [type="checkbox"].filled-in.disabled + label.state-indeterminate:before {
+        border: 1px solid #949494;
+      }
+
+      .checkbox-placeholder {
+        display: table-cell;
+        height: 100%;
+        width: 48px;
+        vertical-align: middle;
+        padding-left: 15px;
+        top: -12px;
+      }
+
+      .title {
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .count {
+        width: 6px;
+        font-size: 13px;
+        opacity: .54;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        padding-left: 16px;
+      }
+
+      .right_panel {
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 8px;
+        padding-right: 8px;
+        width: 24px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.list-panel-level {
+  height: 20px;
+  background-color: $component--grey-02;
+  font-size: 12px;
+  line-height: 1.5;
+  width: 256px;
+  text-align: center;
+  display: table-caption;
+}

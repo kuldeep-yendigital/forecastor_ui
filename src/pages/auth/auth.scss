@@ -1,0 +1,39 @@
+.login-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: table;
+
+  .login {
+    display: table-cell;
+    vertical-align: middle;
+    background-color:#8c073d;
+    color:white;
+    text-align: center;
+    padding-top: 50px;
+
+    @media only screen and (min-width: 500px) { // Styles for no-mobile
+      background-image: url(../../../resources/background.png);
+      background-repeat: no-repeat;
+      background-position: bottom right;
+    }
+
+    img {
+      opacity: 1;
+      height: 60px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 100;
+      margin-top: 80px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 100;
+      margin-bottom: 30px;
+    }
+  }
+}

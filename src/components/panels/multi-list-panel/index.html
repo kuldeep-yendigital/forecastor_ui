@@ -1,0 +1,70 @@
+<template>
+  <require from="../../loading-bar/index"></require>
+  <require from="../../calc-tooltip/index"></require>
+  <require from="../search-panel/index"></require>
+  <require from="../../back-panel-button/index"></require>
+  <require from="../../tooltip/index"></require>
+
+  <div class="multi-list-panel" data-selector="multi-list-panel">
+    <header class="header ${ isRoot === true ? 'isRoot' : ''}">
+      <span class="inner">
+        <back-panel-button containerless if.bind="isRoot"></back-panel-button>
+
+        <span class="back-button" data-selector="arrow-back" show.bind="!isRoot || (!noResultsFound && searchResults.length>0)"
+          click.delegate="previous()" style="display: block">
+          <i class="material-icons arrow_back"></i>
+        </span>
+        <h2 data-selector="multi-list-panel-heading" if.bind="header.length > 0">${header}</h2>
+
+        <span class="select-links">
+          <ul>
+            <li>
+              <a class="menu-btn" click.delegate="selectAllChange(true)" data-selector="select-all">Select all</a>
+            </li>
+            <li>
+              <a class="menu-btn" click.delegate="selectAllChange(false)" data-selector="clear-all">Clear all</a>
+            </li>
+          </ul>
+        </span>
+      </span>
+    </header>
+
+    <div as-element="search-panel" list.bind="list" toggle-selection.call="toggleSelection($event)" loading.bind="dimensionLoading || dataLoading"
+      view-model.ref="searchPanel" header.bind="header" placeholder.bind="placeholder" refresh.call="refresh($event)"
+      dimension-name.bind="dimensionName" containerless></div>
+
+    <loading-panel show.bind="dimensionLoading || dataLoading" action.call="replay($event)"></loading-panel>
+
+    <div show.bind="!dimensionLoading && !dataLoading">
+      <div class="list-panel-level" if.bind="!noResultsFound && searchResults.length===0 && list.length > 0">Level
+        ${list[0].level}</div>
+      <ul ref="list_scroll" class="list" if.bind="!noResultsFound && searchResults.length===0">
+        <template repeat.for="item of list">
+          <li class="list-item ${item.aggregationType} ${!isItemNavigationEnabled(item) ? 'disabled' : ''}"
+            data-selector="multi-list-panel-item ${item.name}">
+            <span class="select-control" click.delegate="toggleSelection(item)" data-selector="span-checkbox-wrapper">
+              <span class="input-field checkbox-placeholder">
+                <input type="checkbox" id="filter-${item.name}" class="filled-in ${!isItemEnabled(item) ? 'disabled' : ''}"
+                  data-selector="checkbox" checked.one-way="item.state === STATES.CHECKED" disabled.bind="!isItemEnabled(item)" />
+                <label class="state-${item.state === STATES.INDETERMINATE ? 'indeterminate' : '' }"></label>
+              </span>
+              <span class="title">${item.name}</span>
+            </span>
+            <tooltip if.bind="dimensionName.toLowerCase() === 'dataset'" taxonomy.bind="item.name"></tooltip>
+            <span if.bind="item.count" click.delegate="next(item)" class="next-link" data-selector="next-link">
+              <span class="count">${item.count}</span>
+              <span class="right_panel" if.bind="hasNext(item)">
+                <span class="icon" data-selector="arrow-next"><i class="material-icons arrow_forward"></i></span>
+              </span>
+            </span>
+            <span if.bind="item.isCalculator">
+              <calc-tooltip text-content="When you select this metric we add columns to the grid to help you find the data. You can change the data level using 'Columns' in the top right navigation."
+                icon="grid_on" disabled.bind="!isItemEnabled(item)">
+              </calc-tooltip>
+            </span>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+</template>

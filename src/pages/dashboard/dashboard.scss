@@ -1,0 +1,175 @@
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+
+.sortable-item {
+  width: 100px;
+  display: inline-block;
+  background: #eee;
+  margin: 1px;
+  padding: 5px 10px;
+}
+
+  .sortable-ghost {
+  opacity: .6;
+}
+
+.add-icon {
+  color: #C4C7CE;
+  font-size: 15px;
+}
+
+.dashboard-banner {
+  background-color: rgb(165,78,172);
+  text-align: center;
+  color: $white;
+
+  .btn {
+    background-color: $white;
+    text-transform: none;
+    color: rgb(165,78,172);
+  }
+
+  .btn:hover {
+    background-color: $near-white;
+  }
+
+  .content {
+    clear: both;
+    padding: 50px 0;
+    margin: auto auto 20px;
+    max-width: 800px;
+
+    h2 {
+      text-align: center;
+      font-size: 27px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 17px;
+      font-weight: normal;
+    }
+  }
+}
+
+.dashboard-content {
+  margin-top: 50px;
+  min-height: 80vh;
+
+
+  .category-selector {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid $component--grey-10;
+  }
+
+  .category-selector li .disabled {
+   color: $component--grey-09;
+   display: inline-block;
+  }
+
+  .category-selector li {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .category-selector li a {
+    color: $component--primary-tmt;
+    display: inline;
+  }
+
+  .delete-category {
+    float: right;
+    font-size: 14px;
+    color: $component--grey-09 !important;
+  }
+
+  .delete-category:hover {
+    color: $component--primary-tmt !important;
+  }
+
+  .edit-category {
+    float: right;
+    font-size: 14px;
+    color: $component--grey-09 !important;
+    &:hover {
+      color: $component--primary-tmt !important;
+    }
+  }
+
+  .category-selector li:hover {
+    background-color: $component--grey-10;
+  }
+
+  .category-selector li:active,
+  .category-selector li.active {
+    background-color: $component--primary-tmt;
+    color: $white
+  }
+
+  .category-selector li a:active,
+  .category-selector li.active a {
+    color: $white
+  }
+
+
+  .subcategory-title {
+    font-weight: bold !important;
+    border-bottom: 1px solid $component--grey-09;
+    font-size: 16px;
+    margin-left: 20px;
+    color: $component--primary-tmt;
+  }
+  
+  .category-title {
+    font-weight: normal !important;
+    font-size: 22px;
+    color: $component--primary-tmt;
+    padding: 10px;
+  }
+
+  .saved-search-container {
+    .search-list-items {
+      height: 60% !important;
+      max-height: 237px;
+      overflow-y: auto;
+    }
+
+    .search-list-title {
+      font-weight: normal !important;
+      font-size: 22px;
+      color: $component--primary-tmt;
+    }
+  }
+
+  .product-container {
+    .product-list-title {
+      font-weight: normal !important;
+      font-size: 22px;
+      color: $component--primary-tmt;
+    }
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media only screen and (min-width: 601px) {
+  .dashboard-slots {
+    margin: 0 -1.5rem;
+  }
+}

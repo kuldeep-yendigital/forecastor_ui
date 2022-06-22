@@ -1,0 +1,21 @@
+<template>
+  <div class="product-list">
+    <div show.bind="!isFetching">
+
+      <div class="product-list-header">
+        <div class="product-list-title">${title}</div>
+      </div>
+
+      <div class="product-list-note" show.bind="products && !products.length">
+        No products found
+      </div>
+
+      <div class="product-list-items">
+        <div class="product-item" repeat.for="product of products">
+            <span class="product-title">${product}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>

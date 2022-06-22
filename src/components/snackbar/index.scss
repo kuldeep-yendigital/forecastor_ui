@@ -1,0 +1,39 @@
+@import "../../styles/colors";
+
+.component-snackbar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 2000;
+
+  .snackbar-message {
+    background: $component--primary-tmt;
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 auto;
+    min-width: 258px;
+    max-width: 568px;
+    text-align: center;
+    display: table;
+  }
+
+  .snackbar-text {
+    font-size: inherit;
+    font-weight: inherit;
+    display: table-cell;
+    padding: 14px 40px 10px 24px;
+    margin: 0;
+    width: 95%;
+  }
+
+  .snackbar-button {
+    display: table-cell;
+    vertical-align: top;
+    padding: 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

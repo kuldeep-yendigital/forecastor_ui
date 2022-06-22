@@ -1,0 +1,50 @@
+<template>
+  <require from="../../saved-searches/index"></require>
+
+  <ux-dialog class="component-dialog-save-search ${dialogType === 'search_list' ? 'select-search' : ''}" data-selector="dialog-save-search">
+    <ux-dialog-header>
+      <div class="save-btn">
+        <a show.bind="dialogType == 'search_list'" data-selector="save-search-button"
+           click.delegate="setDialogType('save_search')" href="#">
+          <i class="material-icons add_circle"></i>Save this search
+        </a>
+        <a show.bind="dialogType == 'save_search'" data-selector="save-search-button-cancel"
+           click.delegate="setDialogType('search_list')" href="#">
+          <i class="material-icons cancel"></i>Cancel
+        </a>
+      </div>
+      <div class="share-btn" data-selector="share-button" show.bind="dialogType !== 'save_search'">
+        <a click.delegate="share()" href="#">Share<i class="material-icons share"></i></a>
+      </div>
+      <div class="close-btn" data-selector="close-button" show.bind="dialogType !== 'save_search'">
+        <a click.delegate="close()" href="#"><i class="material-icons close"></i></a>
+      </div>
+    </ux-dialog-header>
+
+    <!-- Display saved searches list -->
+    <div if.bind="dialogType === 'search_list'">
+      <ux-dialog-body>
+        <saved-searches title="My saved searches"
+                        searches.bind="data.bookmarks.saved"
+                        is-fetching.bind="data.bookmarks.isLoading"
+                        on-search-click.call="open(search)"
+                        on-save-search.call="setDialogType('save_search')"></saved-searches>
+      </ux-dialog-body>
+    </div>
+
+    <!-- Display save dialog -->
+    <div class="save-search-form" show.bind="dialogType === 'save_search'">
+      <form>
+        <ux-dialog-body>
+          <input type="text" placeholder="Name" value.bind="bookmark.title" autofocus="true" minlength="1" maxlength="128" required="true" data-selector="save-search-title">
+          <input type="text" placeholder="Description (optional)" value.bind="bookmark.description" maxlength="220" data-selector="save-search-description">
+        </ux-dialog-body>
+        <ux-dialog-footer>
+          <input if.bind="!data.bookmarks.isLoading"class="btn btn-flat" click.delegate="save(search)" data-selector="form-input-submit" type="submit" value="Save">
+          <input if.bind="data.bookmarks.isLoading" class="btn btn-flat" data-selector="form-input-submit" disabled type="submit" value="Save">
+        </ux-dialog-footer>
+      </form>
+    </div>
+
+  </ux-dialog>
+</template>

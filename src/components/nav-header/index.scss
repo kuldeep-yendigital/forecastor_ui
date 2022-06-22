@@ -1,0 +1,188 @@
+@import "../../styles/colors";
+
+.tool-name-header {
+  background-color: $component--grey-01;
+  height: 64px;
+  font-weight: 300;
+  line-height: 64px;
+  padding-left: 24px;
+  position: relative;
+  color: $white;
+  span {
+    cursor: pointer;
+  }
+
+  .menu-items-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .navigate {
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    z-index: 1;
+
+    .grid_on {
+      vertical-align: middle;
+    }
+
+    .icon-dashboard {
+      vertical-align: middle;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  .user-details{
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    float: right;
+    z-index: 999;
+
+    .account_circle {
+      vertical-align:middle;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  .highlighted {
+    background-color: rgb(165,78,172);
+  }
+}
+
+.search-ribbon-open {
+  display: none;
+  float: left;
+  width: 48px;
+  color: $white;
+  text-align: center;
+  margin-right: 16px;
+}
+.search-ribbon-open i {
+  color: $white;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+}
+//@media only screen and (max-width: 1023px) { // Styles for mobile
+//  .tool-name-header {
+//    padding-left: 0;
+//  }
+//  .search-ribbon-open {
+//    display: block;
+//  }
+//}
+
+.sub-header {
+
+  &:after {
+    clear: both;
+    display: block;
+    content: '';
+  }
+
+  text-align: right;
+  background-color: rgb(86, 92, 107);
+  min-height: 40px;
+  line-height: 40px;
+
+  a {
+    color: white;
+    margin: auto;
+  }
+
+  a:active, a:hover {
+    background-color: #444957;
+  }
+
+  .menu-btn {
+    font-size: 14px;
+    line-height: 16px;
+    display: inline-block;
+    a {
+      padding: 11px;
+      display: inline-block;
+    }
+    i {
+      padding: 0 5px;
+      vertical-align: bottom;
+      font-size: 20px;
+    }
+  }
+
+  .export {
+    margin-right: 10px;
+  }
+
+  .clear, .back {
+    float: left;
+    min-width: 142px;
+
+    border-right: solid 1px;
+
+    a {
+      width: 100%;
+      padding-right: 20px;
+      display: inline-block;
+    }
+
+    i {
+      padding-left: 15px;
+      padding-right: 15px;
+      vertical-align:middle;
+    }
+  }
+
+  .clear {
+    i {
+      &:before {
+        content: "\e5cd";
+      }
+    }
+  }
+
+  .back {
+    i {
+      &:before {
+        content: "\e5c4";
+      }
+    }
+  }
+
+  .chart {
+    float: left;
+
+    a {
+        display: inline-block;
+        padding: 0 15px;
+    }
+
+    i {
+      vertical-align:middle;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(360deg);
+    }
+  }
+}

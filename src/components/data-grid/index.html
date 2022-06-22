@@ -1,0 +1,133 @@
+<template>
+  <require from="../sort-column/index"></require>
+  <require from="./group-column"></require>
+  <require from="../disable-overlay/disable-overlay"></require>
+  <require from="../checkbox/checkbox"></require>
+  <require from="./message.html"></require>
+  <require from="../../value-converters/datapoint-formatter"></require>
+
+  <message text="There are no results for your query. Data may be available at a different level, try adding columns above or removing search filters" if.bind="!hasResults && !isUpdating"></message>
+  <message text="Loading. Please wait..." if.bind="isFirstLoad"></message>
+
+  <div class="data-grids-container-wrapper" class.bind="isLoading ? 'data-grid--loading' : ''" data-selector="data-grid ${isLoading ? 'data-grid-loading' : ''}">
+    <disable-overlay if.bind="isUpdating"></disable-overlay>
+
+    <div class="data-grids-container" ref="dataGridsContainer">
+      <div show.bind="hasResults" ref="pinnedDataGrid" class="data-grid pinned-data-grid" data-selector="pinned-data-grid">
+        <div class="data-grid-heading" data-selector="data-grid-heading">
+          <table>
+            <thead>
+            <tr>
+              <th class="spacing-cell"><div></div></th>
+              <th></th>
+
+              <th repeat.for="header of pinnedGroupHeaders" as-element="group-column" column-id.bind="header.key"
+                  column-label.bind="header.label" colspan.bind="header.colspan"></th>
+            </tr>
+            <tr class="header-row">
+              <th class="spacing-cell"><div></div></th>
+              <th>
+                <div class="select-all sizer">
+                  <checkbox selector="sel-all" callback.call="toggleSelected()" data-selector="checkbox" select.bind="indeterminate" />
+                </div>
+              </th>
+
+              <th repeat.for="header of pinnedHeaders"
+                  on-column-sorted.call="onColumnSorted($event)"
+                  on-column-removed.call="onColumnRemoved($event)"
+                  on-column-pinned.call="onColumnPinned($event)"
+                  on-column-unpinned.call="onColumnUnpinned($event)"
+                  on-column-moved-left.call="onColumnMovedLeft($event)"
+                  on-column-moved-right.call="onColumnMovedRight($event)"
+                  as-element="sort-column"
+                  column-id.bind="header.key"
+                  class="${header.type}"
+                  column-data-type.bind="header.type"
+                  column-type="pinned"
+                  column-read-only.bind="header.readOnly"
+                  column-label.bind="header.label"
+                  data-selector="column-header ${header.key}"></th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="data-grid-data" ref="pinnedDataGridData" data-selector="data-grid-data">
+          <div data-selector="dataGridResults" ref="pinnedTableGridResults">
+            <div ref="gridElementPinned" class="data-grid--table-parent" resizeable>
+              <table>
+                <tbody>
+                <tr repeat.for="row of rows"
+                    class="sizing-row ${$index === highlightedIndex ? 'data-grid--highlighted-row':''} ${row.checked ? 'data-grid--selected-row':''}"
+                    mouseover.delegate="highlightedIndex = $index"
+                    mouseout.delegate="highlightedIndex = null"
+                    data-selector="data-grid-row">
+                  <th class="spacing-cell" style="min-width:0"><div></div></th>
+                  <td style="min-width:0"><checkbox selector="record-${$index}" select.bind="row" data-selector="select-row-checkbox" callback.call="rowSelectionChanged(row)"></checkbox></td>
+                  <td data-selector="row-${$parent.$index}-${header.key} ${header.key}" repeat.for="header of pinnedHeaders" class="${row[header.key].type} ${row[header.key].colour}">${row[header.key] | datapointFormatter}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div show.bind="hasResults" ref="unpinnedDataGrid" class="unpinned-data-grid data-grid" data-selector="unpinned-data-grid">
+        <div class="data-grid-heading" ref="unpinnedDataGridHeading" data-selector="data-grid-heading">
+          <table>
+            <thead>
+            <tr>
+              <th class="spacing-cell"><div></div></th>
+
+              <th repeat.for="header of groupHeaders" as-element="group-column" column-id.bind="header.key"
+                  column-label.bind="header.label" colspan.bind="header.colspan"></th>
+              <th colspan="100%"></th>
+            </tr>
+            <tr class="header-row">
+              <th class="spacing-cell"><div></div></th>
+
+              <th repeat.for="header of headers"
+                  on-column-sorted.call="onColumnSorted($event)"
+                  on-column-removed.call="onColumnRemoved($event)"
+                  on-column-pinned.call="onColumnPinned($event)"
+                  on-column-unpinned.call="onColumnUnpinned($event)"
+                  on-column-moved-left.call="onColumnMovedLeft($event)"
+                  on-column-moved-right.call="onColumnMovedRight($event)"
+                  as-element="sort-column"
+                  column-id.bind="header.key"
+                  class="${header.type}"
+                  column-data-type.bind="header.type"
+                  column-type="unpinned"
+                  column-read-only.bind="header.readOnly"
+                  column-label.bind="header.label"
+                  data-selector="column-header ${header.key}"></th>
+              <th class="spacing-cell"></th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div css="max-height: calc(100% - ${maxTableHeight}px)" class="data-grid-data" ref="unpinnedDataGridData" data-selector="data-grid-data">
+          <div data-selector="dataGridResults" ref="unpinnedTableGridResults">
+            <div ref="gridElementUnpinned" class="data-grid--table-parent" resizeable>
+              <table>
+                <tbody>
+                <tr repeat.for="row of rows"
+                    class="sizing-row ${$index === highlightedIndex ? 'data-grid--highlighted-row':''} ${row.checked ? 'data-grid--selected-row':''}"
+                    mouseover.delegate="highlightedIndex = $index"
+                    mouseout.delegate="highlightedIndex = null"
+                    data-selector="data-grid-row">
+                  <th class="spacing-cell"><div></div></th>
+                  <td data-selector="row-${$parent.$index}-${header.key} ${header.key}" repeat.for="header of headers" class="${row[header.key].type} ${row[header.key].colour} cell-${toKebabCase(row[header.key])}">${row[header.key] | datapointFormatter}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <compose view="./progress-indicator.html"></compose>
+    </div>
+  </div>
+
+</template>

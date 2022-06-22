@@ -1,0 +1,32 @@
+@import "../../styles/colors";
+
+
+.search-item {
+  width: 50px;
+}
+
+.component-dialog-save-search-action {
+  width: 100%;
+  float: right;
+  text-align: right;
+
+  .icon {
+    float: left;
+    margin: 0;
+  }
+
+  a, i {
+    color: $component--grey-08;
+    font-size: 20px;
+    padding-left: 5px;
+
+    &:hover {
+      color: $component--primary-tmt;
+    }
+  }
+
+  .content {
+    margin: -13px 0 0 35px;
+    color: $white;
+  }
+}

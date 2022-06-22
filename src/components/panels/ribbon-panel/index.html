@@ -1,0 +1,23 @@
+<template>
+  <div class="ribbon-panel">
+    <require from="../geography-panel/index"></require>
+    <require from="../metric-panel/index"></require>
+    <require from="../metricindicator-panel/index"></require>
+    <require from="../timeframe-panel/index"></require>
+    <require from="../services-panel/index"></require>
+    <require from="../company-panel/index"></require>
+    <require from="../technology-panel/index"></require>
+    <require from="../billingtype-panel/index"></require>
+    <require from="../channel-panel/index"></require>
+    <require from="../device-panel/index"></require>
+    <require from="../customertype-panel/index"></require>
+    <require from="../dataset-panel/index"></require>
+    <require from="../platform-panel/index"></require>
+    <require from="../industry-panel/index"></require>
+    <require from="../priceband-panel/index"></require>
+
+    <div class="disable-overlay" show.bind="disabled"></div>
+
+    <compose if.bind="panelName" view-model="../${panelName}/index" model.bind="panelData" containerless></compose>
+  </div>
+</template>

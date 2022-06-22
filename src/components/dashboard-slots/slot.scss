@@ -1,0 +1,66 @@
+@import "../../styles/colors";
+
+.dashboard-slot {
+  margin: 0 auto 1.5rem;
+  padding: 5rem 1.5rem;
+  height: 20rem;
+  overflow: hidden;
+
+  a {
+    color: $component--primary-tmt;
+  }
+}
+
+.dashboard-slot-graph {
+  border: 1px solid $component--grey-09;
+  box-shadow: 0 0 0.25rem $component--grey-09;
+  border-radius: 3px;
+  padding: 1em;
+
+  .context-menu {
+    margin-right: 0.25rem;
+
+    .ellipsis {
+      margin-top: 0.25rem;
+    }
+  }
+
+  .dashboard-slot-title {
+    display: block;
+    padding: 0.5rem;
+    margin: -1rem -1rem 0;
+    border-bottom: 1px solid $component--grey-09;
+
+    > div {
+      display: table;
+      height: 3em;
+      overflow: hidden;
+      padding-left: 1rem;
+      padding-right: 4rem;
+    }
+
+    h3 {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 1em;
+      font-weight: bold;
+      color: $component--grey-03;
+      padding: 0;
+      margin: 0;
+      line-height: 1.5;
+
+      > span {
+        display: block;
+        max-height: 3em;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .canvas {
+    margin-top: 1em;
+    position: relative;
+    left: -1.5em;
+    height: 100%;
+  }
+}

@@ -1,0 +1,47 @@
+<template>
+  <ux-dialog if.bind="!loaded" class="dashboard-slot-loading-dialog">
+    <ux-dialog-body>
+      <p data-selector="slots-loading">Loading, please wait &hellip;</p>
+    </ux-dialog-body>
+    <ux-dialog-footer>
+      <a class="btn btn-flat confirm-reset-btn" click.trigger="dialogController.cancel()" data-selector="cancel-save-slot" href="#">Cancel</a>
+    </ux-dialog-footer>
+  </ux-dialog>
+
+  <form if.bind="loaded && full && selectedSlot === -1" class="dashboard-slot-replace-dialog">
+    <ux-dialog>
+      <ux-dialog-body>
+        <p>
+          There are no empty spaces available on the dashboard. In order to save
+          this graph to the dashboard you must replace another graph.
+          Which one would you like to replace?
+        </p>
+        <ul>
+          <li repeat.for="slot of slots">
+            <input id="replace-slot-${$index}" class="with-gap" type="radio" name="slot" model.bind="$index" checked.bind="selectedRadio" data-selector="slot-radio slot-${$index}"/>
+            <label for="replace-slot-${$index}">${slot.title}</label>
+          </li>
+        </ul>
+      </ux-dialog-body>
+      <ux-dialog-footer>
+        <a class="btn btn-flat confirm-reset-btn" click.trigger="dialogController.cancel()" data-selector="cancel-save-slot" href="#">Cancel</a>
+        <a class="btn btn-flat confirm-submit-btn" click.trigger="replace()" href="#" data-selector="replace-slot">Replace</a>
+      </ux-dialog-footer>
+    </ux-dialog>
+  </form>
+
+  <form if.bind="loaded && (!full || selectedSlot !== -1)" class="dashboard-slot-save-dialog">
+    <ux-dialog>
+      <ux-dialog-body>
+        <p>Please enter a title and optional description for the graph.</p>
+        <input type="text" name="title" placeholder="Title" value.bind="title" autofocus="true" minlength="1" maxlength="128" required="true" data-selector="slot-title"/>
+        <input type="text" name="description" placeholder="Description (optional)" value.bind="description" maxlength="220" data-selector="slot-description">
+      </ux-dialog-body>
+      <ux-dialog-footer>
+        <a class="btn btn-flat confirm-reset-btn" click.trigger="dialogController.cancel()" data-selector="cancel-save-slot" href="#">Cancel</a>
+        <a class="btn btn-flat confirm-submit-btn" click.trigger="save()" href="#" data-selector="save-slot">Save</a>
+      </ux-dialog-footer>
+    </ux-dialog>
+  </form>
+
+</template>

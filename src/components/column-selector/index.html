@@ -1,0 +1,33 @@
+<template>
+  <require from="../checkbox/checkbox"></require>
+
+  <div class="menu-btn column-selector ${open ? 'open' : ''}" ref="root" data-selector="column-selector">
+    <a class="menu-btn" click.trigger="toggleOpenClose($event)" data-selector="menubtn">
+      <i class="material-icons view_column"></i>
+      Columns
+    </a>
+
+    <div class="menu" data-selector="column-selector-menu" ref="menu">
+      <div class="list">
+        <div repeat.for="group of data" class="column-group" data-selector="column-group ${group.key}">
+          <div class="group-heading">
+            <checkbox data-selector="checkbox" selector="${group.key}-select-all" one-way.bind="true"
+              read-only.bind="isReadOnly(group)"
+              select.bind="group" callback.call="toggleGroupSelected(group)"></checkbox>
+              <span class="label" click.trigger="toggleExpand(group)">
+              <span class="heading-text">${group.label}</span><i class="material-icons ${group.expanded ? 'remove' : 'add'}"></i>
+              </span>
+          </div>
+          <ul class="column-list" show.bind="group.expanded">
+            <li repeat.for="column of group.columns" class="column-item" click.trigger="toggleSelection(column)">
+              <checkbox selector="column-${column.id}" select.bind="column" text="${column.label}" read-only.bind="column.readOnly"></checkbox>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-footer" click.trigger="toggleAllSelected(all)">
+        <checkbox selector="select-all-columns" select.bind="all"  text="Select all"></checkbox>
+      </div>
+    </div>
+  </div>
+</template>

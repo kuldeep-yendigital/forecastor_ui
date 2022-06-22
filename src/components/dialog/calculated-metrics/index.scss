@@ -1,0 +1,25 @@
+@import "../../../styles/colors";
+@import "./../base-dialog";
+
+.component-dialog-confirm {
+  padding: 0 !important;
+
+  .btn {
+    text-transform: capitalize;
+  }
+
+  checkbox {
+    label {
+      display: inline !important;
+      padding-left: 30px !important;
+    }
+  }
+
+  li {
+    padding-bottom: 10px;
+  }
+}
+
+.confirm-reset-text {
+  max-width: 800px;
+}

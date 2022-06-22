@@ -1,0 +1,131 @@
+@import './../../../styles/colors';
+
+.timeframe-panel {
+  font-size: 12px;
+  line-height: 14px;
+  transition: 0s;
+
+  [type="radio"]:not(:checked) + label,
+  [type="radio"]:checked + label {
+    transition: none;
+  }
+
+  [type="radio"] + label:before,
+  [type="radio"] + label:after {
+    transition: none;
+  }
+
+  .loader {
+    margin-top: 40px;
+  }
+
+  & > header {
+    height: 64px;
+    background-color: $component--grey-01;
+    position: relative;
+
+    > h2 {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 48px;
+    }
+  }
+
+  section {
+    height:100%;
+    padding: 20px;
+
+    .date-selector {
+      &:after {
+        clear: both;
+        content: '';
+        display: block;
+      }
+
+      margin-top:20px;
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+
+    &.warning {
+      padding: 20px 20px 0 20px;
+      margin-bottom: -20px;
+      .text {
+        color: $component--primary-tmt;
+        padding: 0;
+      }
+    }
+  }
+
+  select {
+    display: block;
+    background: $white;
+    height: auto;
+    color: $black;
+
+    &.month {
+      width: 100px;
+      float: right;
+    }
+
+    &.quarter {
+      width: 100px;
+      float: right;
+    }
+
+    &.year {
+      width: 100px;
+      float: left;
+    }
+  }
+
+  &--options {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  &--option {
+    margin-bottom: 10px;
+
+    > [type="radio"] + label {
+      color: $white;
+    }
+
+    > [type="radio"] + label:before,
+    > [type="radio"] + label:after {
+      width: 20px;
+      height: 20px;
+      top: -2px;
+    }
+
+    > [type="radio"].with-gap + label:before,
+    > [type="radio"].with-gap + label:after {
+      border-color: $white;
+    }
+
+    > [type="radio"].with-gap:checked + label:after {
+      background-color: $white;
+    }
+
+    > [type="radio"].with-gap:checked + label:before,
+    > [type="radio"].with-gap:checked + label:after {
+      border-color: adjust-color($component--primary-tmt, $red: 50, $green: 15, $blue: 19);
+    }
+
+    > [type="radio"].with-gap:checked + label:after {
+      background-color: adjust-color($component--primary-tmt, $red: 50, $green: 15, $blue: 19);
+    }
+
+    > [type="radio"]:disabled + label {
+      opacity: $component--radio--disabled--opacity;
+    }
+  }
+
+}

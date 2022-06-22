@@ -1,0 +1,4 @@
+{
+  "s3Bucket": "tmt-tmt-dev-forecaster-ui",
+  "url": "http://tmt-tmt-dev-forecaster-ui.s3-website-eu-west-1.amazonaws.com/"
+}

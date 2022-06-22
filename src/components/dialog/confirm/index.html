@@ -1,0 +1,12 @@
+<template>
+  <ux-dialog class="component-dialog-confirm">
+    <ux-dialog-body>
+      <p class="confirm-reset-text">${model.text}</p>
+    </ux-dialog-body>
+
+    <ux-dialog-footer>
+      <a class="btn btn-flat confirm-reset-btn" click.trigger="controller.cancel()" href="#">${model.reset}</a>
+      <a class="btn btn-flat confirm-submit-btn" click.trigger="controller.ok()" href="#">${model.submit}</a>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

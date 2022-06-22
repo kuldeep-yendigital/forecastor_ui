@@ -1,0 +1,8 @@
+<template>
+  <div class="component-snackbar" show.bind="message" data-selector="snackbar">
+    <div class="snackbar-message">
+        <p class="snackbar-text" data-selector="message" innerhtml.bind="message"></p>
+        <i class="snackbar-button material-icons close" click.delegate="hideMessage()"></i>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,18 @@
+<template>
+  <require from="../multi-list-panel/index"></require>
+  <div data-selector="dataset-panel">
+    <div as-element="multi-list-panel"
+         loading.bind="data.dimension.loading"
+         view-model.ref="listControl"
+         data.bind="data.dimension.items"
+         get-children.call="getChildren($event)"
+         get-parent.call="getParent($event)"
+         is-root.bind="data.dimension.isRoot"
+         on-item-select-change.call="onItemSelectChange($event)"
+         refresh.call="refresh($event)"
+         dimension-name="DataSet"
+         with-result-counts.bind="true"
+         containerless></div>
+  </div>
+
+</template>

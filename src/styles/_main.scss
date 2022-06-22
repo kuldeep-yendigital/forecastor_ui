@@ -1,0 +1,134 @@
+@import "variables";
+@import "colors";
+@import "reset";
+
+html {
+  font-size: $font-size-base;
+}
+
+h1 {
+  font-size: $h1-fontsize;
+}
+
+h2 {
+  font-size: $h2-fontsize;
+}
+
+h3 {
+  font-size: $h3-fontsize;
+}
+
+h4 {
+  font-size: $h4-fontsize;
+}
+
+a {
+  text-decoration: none;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'FSMe', 'Helvetica', 'Verdana', 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// Materialize's overspecific selector makes us do this
+
+input[type="radio"]:checked + label,
+input[type="radio"]:not(:checked) + label {
+  font-size: 16px;
+}
+
+nav ul a {
+  font-size: 18px;
+}
+
+.body-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.main-container {
+  height: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  overflow: hidden;
+  //width: calc(100% - 576px);
+}
+
+.body-wrapper > nav {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.noscript-message {
+  text-align: center;
+  font-weight: bold;
+}
+
+.message {
+  &--block {
+    position: relative;
+    height: 100%;
+    display: none;
+
+    &-show {
+      width: 100%;
+      display: inline-block;
+    }
+
+    .message--text {
+      font-size: 16px;
+      font-weight: 300;
+
+      &-center-middle {
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: auto;
+      }
+    }
+  }
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid $component--primary-tmt;
+  -webkit-box-shadow: 0 1px 0 0 $component--primary-tmt;
+  box-shadow: 0 1px 0 0 $component--primary-tmt;
+}
+
+.btn-flat {
+  background-color: transparent;
+  color: $component--primary-tmt;
+
+  &:focus {
+    border-bottom: 2px solid $component--primary-tmt;
+    background-color: transparent;
+  }
+
+  &:hover {
+    background-color: $component--primary-tmt;
+    color: $white;
+  }
+}

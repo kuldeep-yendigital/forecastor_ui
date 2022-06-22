@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Omdia Forecaster</title>
+  <style>
+    body {
+      font: 14px Helvetica, sans-serif;
+      color: #343742;
+      margin: 0;
+    }
+
+    header {
+      background-color: #343742;
+    }
+
+    footer {
+      color: #FFF;
+    }
+
+    h1 {
+      color: rgb(165,78,172);
+      font-size: 28px;
+      font-weight: 200;
+      line-height: 31px;
+      margin: 0 0 40px 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 200;
+      line-height: 31px;
+      margin: 0 0 20px 5px;
+    }
+
+    section {
+      display: block;
+      text-align: left;
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    a {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #FFF;
+      text-decoration: underline;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    footer img {
+      width: 145px;
+    }
+
+    footer {
+      font-size: 70%;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 250px;
+      padding-top: 20px;
+      background-color: #444957;
+    }
+
+    .content>section>article {
+      padding: 100px;
+      text-align: center;
+    }
+
+    .omdia-logo {
+      display: block;
+      height: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAABuCAYAAACtFj+HAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDOUQwQ0QxMTQ2NkExMUVBOUEwRDgwRjJFRDUzNTQ3RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDOUQwQ0QxMjQ2NkExMUVBOUEwRDgwRjJFRDUzNTQ3RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkM5RDBDRDBGNDY2QTExRUE5QTBEODBGMkVENTM1NDdGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkM5RDBDRDEwNDY2QTExRUE5QTBEODBGMkVENTM1NDdGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+DeOKmgAAC/NJREFUeNrsnetx28gS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');
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <section>
+      <a href="/" class="omdia-logo">
+        </a>
+    </section>
+  </header>
+  <div class="content">
+    <section>
+      <article>
+        <h1>Maintenance</h1>
+        <h2>Omdia Forecaster will be back shortly</h2>
+        <p>We are undergoing essential maintenance to improve Omdia Forecaster. Please check back in 30 minutes.</p>
+      </article>
+    </section>
+  </div>
+  <footer>
+    <section>
+      <article>
+        <a href="/" class="omdia-logo"></a>
+        <p>Omdia is part of <a href="https://tmtintelligence.informa.com/" target="_blank">TMT intelligence.</a></p>
+        <p>Informa UK Limited is a company registered in England and Wales with company number 2306113 whose registered office is 5 Howick Place, London, SW1P 1WG. VAT GB365462636. Informa UK Limited is part of Informa PLC.</p>
+        <p>Copyright © <span id="copyright-year">2018</span><a href="http://www.informa.com/" target="_blank"> Informa PLC.</a></p>
+      </article>
+    </section>
+  </footer>
+  <script>
+    (() => {
+      const copyrightYear = document.getElementById('copyright-year');
+      copyrightYear.innerText = (new Date()).getUTCFullYear();
+    })();
+  </script>
+</body>
+</html>

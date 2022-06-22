@@ -1,0 +1,298 @@
+@import "../../styles/colors";
+
+@mixin collapsed {
+  .search-ribbon-inner {
+    width: 64px;
+
+    .header {
+      width: 64px;
+      margin-right: 18px;
+
+      .logo-text {
+        display: none;
+      }
+    }
+  }
+
+  .toggleview-container .label {
+    display: none;
+  }
+
+  .toggleview-container i:after {
+    content: "\e315";
+  }
+}
+
+@mixin iconography {
+  &.icon-dataset:before {
+    content: "\e873";
+  }
+
+  &.icon-metric:before {
+    content: "\e1db";
+  }
+
+  &.icon-metricindicator:before {
+    content: "\e87a";
+  }
+
+  &.icon-industry:before {
+    content: "\e7f1";
+  }
+
+  &.icon-priceband:before {
+    content: "\e263";
+  }
+
+  &.icon-platform:before {
+    content: "\e875";
+  }
+
+  &.icon-timeframe:before {
+    content: "\e916";
+  }
+
+  &.icon-geography:before {
+    content: "\e894";
+  }
+
+  &.icon-services:before {
+    content: "\e42d";
+  }
+
+  &.icon-company:before {
+    content: "\e7ee";
+  }
+
+  &.icon-technology:before {
+    content: "\e8b8";
+  }
+
+  &.icon-billingtype:before {
+    content: "\e227";
+  }
+
+  &.icon-channel:before {
+    content: "\e563";
+  }
+
+  &.icon-device:before {
+    content: "\e326";
+  }
+
+  &.icon-customertype:before {
+    content: "\e7fd";
+  }
+}
+
+.search-ribbon {
+  float: left;
+  background-color: $component--grey-00;
+  color: $white;
+  //width: 64px;
+  height: 100%;
+  //transition: width $component--transition-duration $component--transition-easing;
+  position: relative;
+  font-size: 18px;
+  width: 256px;
+
+  .sub-panel {
+    height: 100%;
+  }
+
+  .search-ribbon-inner {
+    width: 256px;
+    height: 100%;
+    position: relative;
+    //transition: width $component--transition-duration $component--transition-easing;
+    float: left;
+
+    .header {
+      margin-right: 80px;
+      text-align: right;
+      line-height: 64px;
+      //transition: margin-right $component--transition-duration $component--transition-easing;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 256px;
+
+      .logo-text {
+        height: 38px;
+        vertical-align: middle;
+        //transition: opacity $component--transition-duration $component--transition-easing;
+      }
+
+      .logo {
+        height: 30px;
+        vertical-align: middle;
+      }
+
+    }
+  }
+
+  .filters {
+    position: absolute;
+    right: 0;
+    top: 64px;
+    bottom: 64px;
+    width: 256px;
+    overflow: auto;
+    overflow-x: hidden;
+    background-color: $component--grey-00;
+
+    ul {
+      max-height: 100%;
+      -ms-overflow-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        width: 256px;
+        position: relative;
+        height: 64px;
+        cursor: pointer;
+        color: $white;
+        line-height: 64px;
+        text-align: left;
+        padding-left: 20px;
+
+        &:hover {
+          background-color: lighten($component--grey-00, 5%);
+        }
+
+        &.current {
+          background: #444957;
+
+          &:hover {
+            background-color: #444957;
+          }
+        }
+
+        .material-icons {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 64px;
+          line-height: 64px;
+          text-align: center;
+
+          &:before {
+            display: block;
+            width: 64px;
+            height: 64px;
+            content: '';
+          }
+
+          @include iconography;
+        }
+
+        &.selected {
+          > .material-icons:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: rgb(165,78,172);
+            border-radius: 14px;
+            height: 14px;
+            width: 14px;
+            right: 16px;
+            top: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .toggleview-container {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 64px;
+    width: 256px;
+
+    .label {
+      display: inline-block;
+      padding-left: 20px;
+      position: relative;
+      width: 100%;
+    }
+
+    i {
+      width: 64px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      line-height: 64px;
+      text-align: center;
+      height: 64px;
+
+      &:after {
+        content: "\e314";
+        font-size: 24px;
+        line-height: 64px;
+        text-transform: none;
+        position: absolute;
+        right: 0;
+        width: 64px;
+        text-align: center;
+      }
+    }
+  }
+
+  &.open {
+    width: 512px;
+  }
+
+  &.view_icon {
+    width: 64px;
+
+    @include collapsed;
+
+    &.open {
+      width: 320px;
+    }
+  }
+
+  &.view_text {
+    .logo {
+      display: none;
+    }
+  }
+
+  .disable-overlay {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.60;
+    background-color: $component--grey-01;
+    z-index: 3;
+  }
+}
+
+/***************************Mobile******************************/
+
+@media only screen and (max-width: 375px) { // Styles for mobile
+
+  .search-ribbon {
+    width: 64px;
+
+    @include collapsed;
+
+    .filters {
+      bottom: 0;
+    }
+
+    &.open {
+      width: 320px;
+    }
+
+    .toggleview-container {
+      display: none;
+    }
+  }
+}

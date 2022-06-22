@@ -1,0 +1,140 @@
+@import "../../styles/colors";
+
+.tool-name-header {
+  background-color: $component--grey-01;
+  height: 64px;
+  font-weight: 300;
+  line-height: 64px;
+  padding-left: 24px;
+  position: relative;
+  color: $white;
+
+  .highlighted {
+    background-color: rgb(165,78,172);
+  }
+}
+
+.search-ribbon-open {
+  display: none;
+  float: left;
+  width: 48px;
+  color: $white;
+  text-align: center;
+  margin-right: 16px;
+}
+.search-ribbon-open i {
+  color: $white;
+  position: relative;
+  top: 4px;
+  font-size: 24px;
+}
+//@media only screen and (max-width: 1023px) { // Styles for mobile
+//  .tool-name-header {
+//    padding-left: 0;
+//  }
+//  .search-ribbon-open {
+//    display: block;
+//  }
+//}
+
+
+.sub-header {
+  &__right {
+    float: right;
+  }
+  
+  &__left {
+    float: left;
+  }
+
+  .show-active-filter-button {
+    float: left !important;
+  }
+
+  &:after {
+    clear: both;
+    display: block;
+    content: '';
+  }
+
+  text-align: right;
+  background-color: rgb(86, 92, 107);
+  min-height: 40px;
+  line-height: 40px;
+
+  a {
+    color: white;
+    margin: auto;
+  }
+
+  a:active, a:hover {
+    background-color: #444957;
+  }
+
+  .apply-filter-change a {
+    font-size: 16px;
+  }
+
+  .menu-btn {
+    font-size: 14px;
+    line-height: 16px;
+    display: inline-block;
+    a {
+      padding: 11px;
+      display: inline-block;
+      &.disabled {
+        color: #9F9F9F !important;
+      }
+    }
+    i {
+      padding: 0 5px;
+      vertical-align: bottom;
+      font-size: 20px;
+    }
+  }
+
+  .export {
+    margin-right: 10px;
+  }
+
+  .clear, .back {
+    float: left;
+    min-width: 142px;
+
+    border-right: solid 1px;
+
+    a {
+      width: 100%;
+      padding-right: 20px;
+      display: inline-block;
+    }
+
+    i {
+      padding-left: 15px;
+      padding-right: 15px;
+      vertical-align:middle;
+    }
+  }
+
+  .chart {
+    float: left;
+
+    a {
+        display: inline-block;
+        padding: 0 15px;
+    }
+
+    i {
+      vertical-align:middle;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform:rotate(360deg);
+    }
+    to {
+      transform:rotate(0deg);
+    }
+  }
+}

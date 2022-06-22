@@ -1,0 +1,34 @@
+<template>
+  <require from="../../components/saved-searches/index"></require>
+  <div>
+    <a if.bind="showAddButton" class="material-icons playlist_add add-icon" click.trigger="addSubCategory()" href="#"></a>
+  </div>
+  <div repeat.for="item of data">
+    <div class="saved-search-container">
+      <div class="subcategory-title">
+        ${item.title}
+        <a if.bind="showAddButton" class="material-icons delete delete-category" click.trigger="deleteSubCategory(item)" href="#"></a>
+        <a if.bind="showAddButton" class="material-icons mode_edit edit-category" click.trigger="editSubCategory(item)" href="#"></a>
+      </div>
+      <div class="row">
+        <div style="padding: 0px !important" class="col s12 m12 l12">
+          <saved-searches data-selector="saved-searches" display-filter.bind="false" catid.bind="item.id" horizontal.bind="true" sortable.bind="true"
+            display-save-current-search-message.bind="false" subcategoryid="item.id" searches.bind="item.hash" is-fetching.bind="data.bookmarks.saved.isLoading"
+            on-search-click.bind="open" tooltip-direction="right" is-admin.bind="showAddButton" disable-delete.bind="!showAddButton" is-popular.bind="true"
+            parentid.bind="parentid" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="saved-search-container" if.bind="showAddButton">
+    <div class="subcategory-title">All Saved Searches</div>
+    <div class="row">
+      <div style="padding: 0px !important; overflow: scroll; height: 250px" class="col s12 m12 l12">
+        <saved-searches data-selector="saved-searches" display-filter.bind="false" fromall.bind="true" horizontal.bind="true" clonesortable.bind="true"
+          sortable.bind="true" display-save-current-search-message.bind="false" searches.bind="allbookmarks" is-fetching.bind="data.bookmarks.saved.isLoading"
+          on-search-click.bind="open" tooltip-direction="right" is-admin.bind="showAddButton" is-popular.bind="true" parentid.bind="parentid">
+          />
+      </div>
+    </div>
+  </div>
+</template>

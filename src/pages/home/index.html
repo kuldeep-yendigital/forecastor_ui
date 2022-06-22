@@ -1,0 +1,24 @@
+<template>
+  <require from="../../components/cookie-banner/index"></require>
+  <cookie-banner></cookie-banner>
+  <div class="body-wrapper">
+    <require from="../../components/search-ribbon/index"></require>
+    <search-ribbon containerless dimensions.bind="taxonomyStore.data.dimensions" disabled.bind="view === 'visualisation'"></search-ribbon>
+    <require from="../../components/data-grid/index"></require>
+    <require from="../../components/active-filter/index"></require>
+    <require from="../../components/visualisation/visualisation"></require>
+    <require from="../../components/app-header/index"></require>
+    <require from="../../components/nav-header/index"></require>
+    <require from="../../components/grid-landing/index.jsx"></require>
+    <section class="main-container ${numberOfSelectRecords > 0 && 'main-container--records-selected'}">
+      <nav-header is-grid="true" in-landing-mode.bind="showLanding" containerless></nav-header>
+      <app-header in-landing-mode.bind="showLanding" containerless view.two-way="view" visualisation-type.two-way="visualisationType"></app-header>
+      <section as-element="active-filter" show.bind="view === 'active-filter'"></section>
+      <grid-landing show.bind="showLanding"></grid-landing>
+      <section data.bind="data" show.bind="view === 'data-grid' && showLanding === false" class="data-grid" as-element="data-grid"></section>
+      <visualisation if.bind="view === 'visualisation'" data-selector="visualisation" type.bind="visualisationType"></visualisation>
+    </section>
+  </div>
+  <require from="../../components/snackbar/index"></require>
+  <snackbar></snackbar>
+</template>

@@ -1,0 +1,37 @@
+<template>
+  <require from="./../search-panel/index"></require>
+  <require from="./../../../value-converters/property-filter-formatter"></require>
+
+  <div class="multi-list-panel" data-selector="multi-list-panel">
+    <header class="header isRoot">
+      <span class="inner">
+        <h2 data-selector="multi-list-panel-heading">Company</h2>
+        <span class="select-links" if.bind="hasResults === true">
+          <ul>
+              <li>
+                <a class="menu-btn"
+                    click.delegate="selectAllChange(true)"
+                    data-selector="select-all">Select all</a>
+              </li>
+              <li>
+                <a class="menu-btn"
+                    click.delegate="selectAllChange(false)"
+                    data-selector="clear-all">Clear all</a>
+              </li>
+          </ul>
+        </span>
+      </span>
+    </header>
+    <div as-element="search-panel"
+        list.bind="data.dimension.items"
+        header="Company"
+        loading.bind="data.dimension.loading"
+        refresh.call="refresh($event)"
+        placeholder="Search company..."
+        selection.bind="data.dimension.items | propertyFilter : 'state' : 1"
+        dimension-name="Company"
+        with-live-count.bind="calculateLiveCount"
+        containerless>
+    </div>
+  </div>div>
+</template>

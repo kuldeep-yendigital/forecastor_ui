@@ -1,0 +1,23 @@
+@import "../../../styles/colors";
+
+.ribbon-panel {
+  overflow: hidden;
+  position: relative;
+  float: left;
+  width: 256px;
+  height: 100%;
+  background-color: $component--grey-03;
+  li, h2 {
+    color: $white;
+  }
+
+  .disable-overlay {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.60;
+    background-color: $component--grey-01;
+    z-index: 3;
+  }
+}

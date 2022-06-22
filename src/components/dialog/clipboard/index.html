@@ -1,0 +1,13 @@
+<template>
+  <ux-dialog class="component-dialog-clipboard" data-selector="clipboard-dialog">
+    <ux-dialog-body>
+      <p class="clipboard-text">${model.text}</p>
+      <pre class="clipboard-value" data-selector="clipboard-value">${model.value}</pre>
+    </ux-dialog-body>
+
+    <ux-dialog-footer>
+      <a class="btn btn-flat clipboard-reset-btn" click.trigger="controller.cancel()" href="#">${model.reset}</a>
+      <a class="btn btn-flat clipboard-submit-btn" click.trigger="toClipboard()" href="#">${model.submit}</a>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

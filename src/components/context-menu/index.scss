@@ -1,0 +1,116 @@
+@import "../../styles/colors";
+
+.context-menu {
+
+  float: right;
+  margin-right: 20px;
+
+  .ellipsis {
+    &:before {
+      content: '...';
+      display: block;
+      color: grey;
+      line-height: 7px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    display: block;
+    height: 20px;
+    width: 24px;
+    text-align: right;
+    cursor: pointer;
+  }
+
+  .menu {
+    text-align: left;
+    display: none;
+    position: fixed;
+    background: $white;
+    border-radius: 2px;
+    z-index: 99999;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    width: 192px;
+    padding: 8px 0;
+
+    ul {
+      border-top: 1px solid rgba(0,0,0,0.15);
+
+      &:first-child {
+        border-top: none;
+      }
+      .dropdown:hover .dropdownlist{
+        display: block;
+      }
+
+      li {
+        .dropdownlist {
+          width: 192px;
+          box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+          width: 100%;
+          border-radius: 2px;
+          left: 100%;
+          top: 9px;
+          cursor: default;
+          position: absolute;
+          display: none;
+          background: $white;
+          &.left {
+            left: auto !important;
+            right: 100% !important;
+          }
+        }
+        i {
+         &.material-icons {
+          position: relative;
+          font-size: 18px;
+          line-height: 18px;
+          text-transform: none;
+          position: absolute;
+          left: 14px;
+         }
+         &.material-icons-right {
+          position: relative;
+          font-size: 18px;
+          line-height: 18px;
+          text-transform: none;
+          position: absolute;
+          right: 14px;
+         }
+        }
+        i.material-icons {
+          position: relative;
+          font-size: 18px;
+          line-height: 18px;
+          text-transform: none;
+          position: absolute;
+          left: 14px;
+        }
+
+
+
+        &:hover {
+          background: $component--grey-10;
+        }
+
+        color: $component--grey-03;
+        height: 48px;
+        font-size: 12px;
+        font-weight: 400;
+        padding: 16px 0 20px 40px;
+        cursor: pointer;
+
+        &.disabled {
+            color: $component--grey-07;
+        }
+      }
+    }
+
+    &.open {
+      display: block;
+    }
+
+  }
+
+
+}

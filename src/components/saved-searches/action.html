@@ -1,0 +1,8 @@
+<template>
+  <require from="./../tooltip/index"></require>
+  <div class="component-dialog-save-search-action">
+    <tooltip text-content.bind="text" if.bind="text" direction.bind="tooltipDirection"></tooltip>
+    <a class="material-icons share" click.trigger="share()" href="#" data-selector="saved-search-share"></a>
+    <a if.bind="!disableDelete" class="material-icons delete" click.trigger="delete()" href="#" data-selector="saved-search-delete"></a>
+  </div>
+</template>

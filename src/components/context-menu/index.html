@@ -1,0 +1,43 @@
+<template>
+  <require from="../filter-column/index"></require>
+  <div class="context-menu">
+    <span click.trigger="toggleState($event)" class="ellipsis" data-selector="ellipsis"></span>
+    <div class="menu ${open ? 'open' : ''}" data-selector="context-menu-popup" ref="menu">
+      <ul>
+        <li class="${isSortable ? '' : 'disabled'} dropdown" data-selector="filter-column">
+          <i class="material-icons filter_list"></i>Filter
+          <i class="material-icons-right keyboard_arrow_right"></i>
+          <div class="dropdownlist">
+              <filter-column props.bind="{ data: list, toggleItem: toggleItem, column: columnRef, activeFilters: selectedColumnFilters }"></filter-column>
+          </div>
+        </li>
+      </ul>
+      <ul>
+        <li click.delegate="sort(true)" class="${isSortable ? '' : 'disabled'}" data-selector="sort-column-asc" aria-disabled.bind="!isSortable">
+          <i class="material-icons arrow_upward"></i>Sort Ascending
+        </li>
+        <li click.delegate="sort(false)" class="${isSortable ? '' : 'disabled'}" data-selector="sort-column-desc" aria-disabled.bind="!isSortable">
+          <i class="material-icons arrow_downward"></i>Sort Descending
+        </li>
+      </ul>
+      <ul>
+        <li click.delegate="moveLeft()" class="${isMoveableLeft ? '' : 'disabled'}" data-selector="move-column-left" aria-disabled.bind="!isMoveableLeft">
+          <i class="material-icons arrow_back"></i>Move left
+        </li>
+        <li click.delegate="moveRight()" class="${isMoveableRight ? '' : 'disabled'}" data-selector="move-column-right" aria-disabled.bind="!isMoveableRight">
+          <i class="material-icons arrow_forward"></i>Move right
+        </li>
+      </ul>
+      <ul>
+        <li click.delegate="remove()" class="${isAggregable ? '' : 'disabled'}" data-selector="remove-column" aria-disabled.bind="!isAggregable">
+          <i class="material-icons close"></i>Remove column
+        </li>
+      </ul>
+      <ul>
+        <li click.delegate="togglePin()" class="${isPinnable ? '' : 'disabled'}" data-selector="pin-column" aria-disabled.bind="!isPinnable">
+          <i class="material-icons lock_outline"></i>${pinAction} column
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>

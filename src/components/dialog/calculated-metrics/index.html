@@ -1,0 +1,22 @@
+<template>
+  <require from="../../checkbox/checkbox"></require>
+
+  <ux-dialog class="component-dialog-confirm">
+    <ux-dialog-body>
+      <p class="confirm-reset-text">We have added columns to grid to enable you to view the calculated metrics you have selected.</p>
+      <p class="confirm-reset-text">You can refine the level of aggregation using  "Columns" in the navigation.</p>
+    </ux-dialog-body>
+
+    <ux-dialog-footer>
+      <a
+        class="btn btn-flat confirm-reset-btn"
+        click.trigger="controller.cancel()"
+        data-selector="calculated-metrics-dialog-dismiss"
+        href="#">Close</a>
+      <a
+        class="btn btn-flat confirm-submit-btn"
+        click.trigger="controller.ok()"
+        href="#">Don't show again</a>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

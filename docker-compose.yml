@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: ./docker/ui/Dockerfile
+    command: npm run start:docker
+    container_name: forecaster-ui
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - ENVIRONMENT=${ENVIRONMENT}
+    volumes:
+      - .:/opt/forecaster-ui
+      - node_modules:/opt/forecaster-ui/node_modules
+    ports:
+      - "9000:9000"
+      - "9876:9876"
+
+volumes:
+  node_modules:

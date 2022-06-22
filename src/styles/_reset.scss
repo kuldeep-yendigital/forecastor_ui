@@ -1,0 +1,16 @@
+* {
+  -ms-touch-action: pan-y pinch-zoom;
+  touch-action: pan-y pinch-zoom;
+  -ms-scroll-chaining: none;
+}
+
+html,
+body,
+h1,
+h2,
+.list-panel--header h2,  // #TODO: this is temporary (remove when materialize is removed (OGFT-360)
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+@import "../../../styles/colors";
+@import "./../base-dialog";
+
+.component-dialog-confirm {
+  padding: 0 !important;
+
+  .btn {
+    text-transform: capitalize;
+  }
+}

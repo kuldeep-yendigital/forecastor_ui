@@ -1,0 +1,83 @@
+#tour-mask {
+  box-sizing: content-box;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 999997!important;
+
+  &.active {
+    position: absolute;
+  }
+}
+
+#tour-highlight {
+  box-sizing: content-box;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  opacity: 0.6;
+  z-index: 999998!important;
+
+  &.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    left: 960px;
+    width: 120px;
+    height: 64px;
+  }
+}
+
+.hopscotch-bubble {
+  font-family: 'FSMe', 'Helvetica', 'Verdana', 'sans-serif' !important;
+
+  h3 {
+    color: #292c35 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    font-family: 'FSMe', 'Helvetica', 'Verdana', 'sans-serif' !important;
+  }
+
+  .hopscotch-content {
+    font-family: 'FSMe', 'Helvetica', 'Verdana', 'sans-serif' !important;
+    padding-top: 10px !important;
+
+    .action {
+      color: rgb(165,78,172);
+    }
+  }
+
+  .hopscotch-bubble-close {
+    background: transparent url("../tour/sprite-grey.png") -192px -92px no-repeat !important;
+  }
+
+  .hopscotch-bubble-number {
+    background: transparent url("../tour/sprite-grey.png") 0 0 no-repeat !important;
+  }
+
+  .hopscotch-nav-button {
+    border-width: 0 !important;
+    border-radius: 2px !important;
+    background-color: rgb(165,78,172) !important;
+    background-image: none !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    text-shadow: none !important;
+    padding: 0 1rem;
+
+    &:hover {
+      background-color: rgb(165,78,172) !important;
+      background-image: none !important;
+      color: #fff !important;
+      text-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      -moz-box-shadow: none !important;
+      box-shadow: none !important;
+    }
+  }
+}

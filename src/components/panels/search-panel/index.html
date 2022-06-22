@@ -1,0 +1,69 @@
+<template>
+  <require from="../../loading-bar/index"></require>
+  <require from="../../calc-tooltip/index"></require>
+  <require from="../../tooltip/index"></require>
+  <div class="search-panel" data-selector="search-panel">
+    <loading-panel show.bind="dimensionLoading" action.call="replay($event)"></loading-panel>
+    <div show.bind="!dimensionLoading">
+      <div class="search-container" show.bind="!loading">
+        <input type="text" value.bind="searchTerm" ref="typeahead" keyup.trigger="onTypeAhead($event)"
+          placeholder.one-way="placeholder" data-selector="search-panel-input" />
+        <i class="material-icons search-icon search"></i>
+      </div>
+
+      <p show.bind="noResultsFound" class="no-results">No results found</p>
+
+      <!-- Pin selected items start -->
+      <div data-selector="search-panel-selection" if.bind="0 < selection.length && !searchTerm" ref="list_selection">
+        <ul class="list selection-list selection-list-${header.toLowerCase()}">
+          <li>
+            <div class="search-panel-level">Your current selection</div>
+          </li>
+          <template repeat.for="item of selection">
+            <li class="list-item ${!isItemEnabled(item) ? 'disabled' : ''}">
+              <span class="select-control" click.delegate="toggleSelection(item)">
+                <span class="input-field checkbox-placeholder">
+                  <input type="checkbox" class="filled-in ${!isItemEnabled(item) ? 'disabled' : ''}" data-selector="checkbox"
+                    checked.one-way="item.state === STATES.CHECKED" disabled.bind="!isItemEnabled(item)" />
+                  <label class="state-${item.state === STATES.INDETERMINATE ? 'indeterminate' : '' }"></label>
+                </span>
+                <span class="title">${item.name}</span>
+              </span>
+            </li>
+          </template>
+        </ul>
+      </div>
+      <!-- Pin selected items end -->
+
+      <ul ref="list_scroll" data-selector="search-panel-results" class="list ${(!parent.dimensionItem ? 'company-list' : '')}"
+        if.bind="!noResultsFound && searchResults.length>0">
+        <template repeat.for="item of searchResults">
+          <li if.bind="!noResultsFound && searchResults.length>0" class="list-item ${!isItemEnabled(item) ? 'disabled' : ''}"
+            data-selector="search-panel-item ${header.toLowerCase()} ${item.name}">
+
+            <div class="search-panel-level" if.bind="item.level && !item.grouped">Level ${item.level}</div>
+            <span class="select-control" click.delegate="toggleSelection(item)">
+              <span class="input-field checkbox-placeholder">
+                <input type="checkbox" id="filter-${item.name}" class="filled-in ${!isItemEnabled(item) ? 'disabled' : ''}"
+                  data-selector="checkbox" checked.one-way="item.state === STATES.CHECKED" disabled.bind="!isItemEnabled(item)" />
+                <label class="state-${item.state === STATES.INDETERMINATE ? 'indeterminate' : '' }"></label>
+              </span>
+              <span class="title">${item.name}</span>
+            </span>
+            <tooltip taxonomy.bind="item.name"></tooltip>
+            <span if.bind="item.count" click.delegate="next(item)" class="next-link">
+              <span class="right_panel" if.bind="hasNext(item)">
+                <span class="icon" data-selector="arrow-next"><i class="material-icons arrow_forward"></i></span>
+              </span>
+            </span>
+            <span if.bind="item.isCalculator">
+              <calc-tooltip text-content="When you select this metric we add columns to the grid to help you find the data. You can change the data level using 'Columns' in the top right navigation."
+                icon="grid_on" disabled.bind="!isItemEnabled(item)">
+              </calc-tooltip>
+            </span>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+</template>

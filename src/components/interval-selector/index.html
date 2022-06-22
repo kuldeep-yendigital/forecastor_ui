@@ -1,0 +1,38 @@
+<template>
+  <require from="../tooltip/index"></require>
+  <div class="timeframe-panel--options">
+    <div class="timeframe-panel--option">
+      <input class="with-gap"
+             type="radio"
+             id="timeframe-option--yearly"
+             name="timeframe-option"
+             checked.bind="selectedInterval"
+             model.bind="TIMEFRAME.INTERVAL.YEARLY"
+             data-selector="timeframe-option timeframe-option-yearly"
+             change.delegate="onIntervalChange()"
+      />
+      <label for="timeframe-option--yearly" data-selector="timeframe-option-label">Yearly</label>
+    </div>
+    <div class="timeframe-panel--option">
+      <input class="with-gap"
+             type="radio"
+             id="timeframe-option--quarterly"
+             name="timeframe-option"
+             checked.bind="selectedInterval"
+             model.bind="TIMEFRAME.INTERVAL.QUARTERLY"
+             data-selector="timeframe-option timeframe-option-quarterly"
+             change.delegate="onIntervalChange()"
+      />
+      <label for="timeframe-option--quarterly" data-selector="timeframe-option-label">Quarterly</label>
+      <tooltip text-content="Historical data is available quarterly and yearly while forecast data is only available yearly."></tooltip>
+    </div>
+
+    <div class="loader" show.bind="isIntervalUpdating">
+      <div class="text">Loading, please wait</div>
+      <div class="progress white">
+        <div class="indeterminate forecaster-primary-color"></div>
+      </div>
+    </div>
+  </div>
+
+</template>

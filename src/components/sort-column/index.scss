@@ -1,0 +1,64 @@
+@import "../../styles/colors";
+
+.sort-column-remove-btn {
+  cursor: pointer !important;
+}
+
+.sort-column--sortable-true {
+  cursor: pointer;
+}
+
+.sort-column--sortable-false {
+  cursor: default;
+}
+
+.sort-column {
+  .numeric & {
+    margin-right: 24px
+  }
+
+  .sort-icon {
+    color: grey;
+    font-size: 15px;
+    position: relative;
+    top: 3px;
+    left: 3px;
+  }
+
+  .column-name {
+    position: relative;
+    &.filtered {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        background: rgb(115, 26, 237);
+        border-radius: 14px;
+        height: 14px;
+        width: 14px;
+        right: -10px;
+        top: -5px;
+      }
+    }
+  }
+}
+
+.sort-column--unsorted,
+.sort-column--sorted {
+  color: $component--grey-03;
+  opacity: 1;
+  vertical-align: top;
+  font-size: 16px !important;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sort-column--unsorted {
+  opacity: 0;
+  transition: opacity 100ms;
+}
+
+.sort-column:hover > .sort-column--unsorted {
+  opacity: 0.5;
+}

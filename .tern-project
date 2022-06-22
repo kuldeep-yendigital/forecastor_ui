@@ -1,0 +1,19 @@
+{
+  "ecmaVersion": 6,
+  "libs": [
+    "browser"
+  ],
+  "loadEagerly": [
+    "src/**/*.js"
+  ],
+  "dontLoad": [
+    "node_modules/**"
+  ],
+  "plugins": {
+    "commonjs": {},
+    "doc_comment": true,
+    "webpack": {
+      "configPath": "./webpack.dev.js"
+    }
+  }
+}

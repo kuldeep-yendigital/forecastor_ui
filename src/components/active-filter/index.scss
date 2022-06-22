@@ -1,0 +1,75 @@
+@import "../../styles/colors";
+
+.active-filter {
+  height: calc(100% - 106px);
+  position: relative;
+}
+
+.active-filter-search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: white;
+  padding: 1em;
+}
+
+.active-filter-search input[type=text] {
+  margin: 0;
+}
+
+.active-filter-list {
+  padding-top: 6em;
+  height: 100%;
+}
+
+.active-filter-list > ul {
+  height: 100%;
+  overflow: scroll;
+}
+
+.active-filter-list ul {
+  clear: both;
+  padding-left: 2em;
+}
+
+.active-filter-list checkbox {
+  float: left;
+  position: relative;
+}
+
+.active-filter-child-hidden {
+  display: none;
+}
+
+.active-filter-child-visible {
+  display: block;
+}
+
+.active-filter {
+  [type="text"]:focus {
+    border-bottom: 1px solid $component--primary-tmt !important;
+    box-shadow: 0 1px 0 0 $component--primary-tmt !important;
+  }
+
+  [type="checkbox"].filled-in:checked + label:after {
+    border: 2px solid $component--primary-tmt !important;
+    background-color: $component--primary-tmt !important;
+  }
+
+  [type="checkbox"]:checked + label:before {
+    border-right: 2px solid #fff !important;
+    border-bottom: 2px solid #fff !important;
+  }
+}
+
+//.active-filter-child-hidden > checkbox,
+//.active-filter-child-hidden > span {
+//  opacity: 0.2;
+//}
+//
+//.active-filter-child-visible > checkbox,
+//.active-filter-child-visible > span {
+//  opacity: 1;
+//}

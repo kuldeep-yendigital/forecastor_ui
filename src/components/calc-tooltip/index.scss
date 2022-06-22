@@ -1,0 +1,69 @@
+@import "../../styles/colors";
+
+.tooltip {
+  .icon {
+    float: right;
+    margin-right: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .fa-calculator {
+      display: inline-block;
+      width: 15px;
+      color: white;
+      margin: 20px 0;
+    }
+  }
+
+  &.disabled {
+    .fa-calculator {
+      color: #999999;
+    }
+  }
+
+  .content {
+    background-color: $component--primary-tmt;
+    z-index: 1001;    // To appear above overlay
+    margin-left: 65px;
+    position: fixed;
+    max-width: 460px;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+
+    &.left {
+      right: 251px;
+    }
+
+    &:before {
+      content:"\A";
+      border-style: solid;
+      border-width: 10px;
+      border-color: transparent;
+      position: absolute;
+      top: 13px;
+    }
+
+    &.left-arrow:before {
+      left: -20px;
+      border-right-color: $component--primary-tmt;
+    }
+
+    &.right-arrow:before {
+      right: -20px;
+      border-left-color: $component--primary-tmt;
+    }
+
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+      white-space: normal;
+      text-align: left;
+      width: 100%;
+      word-wrap: break-word;
+      display: inline-block;
+    }
+  }
+}

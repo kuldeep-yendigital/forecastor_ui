@@ -1,0 +1,73 @@
+<template>
+  <require from="./action"></require>
+  <require from="./../../value-converters/date"></require>
+  <require from="../input-search/index"></require>
+
+  <compose
+    action.call="activate()"
+    model.bind="{ text : '' }"
+    show.bind="isFetching"
+    view-model="./../loading-bar/index"
+  ></compose>
+
+<div class="save-search">
+  <div show.bind="!isFetching" class="search-list">
+
+    <div if.bind="title && title.length > 0" class="search-list-header">
+      <div class="search-list-title">${title}</div>
+      <input-search keyup.delegate="onKeyUp($event)" if.bind="displayFilter"></input-search>
+    </div>
+
+    <div class="search-list-note"
+         data-selector="no-search-results"
+         show.bind="!searches.length && !filteredSearch">
+      No searches found.
+      <span if.bind="displaySaveCurrentSearchMessage">Click <a data-selector='save-search' click.delegate="saveSearch()" href="#">here</a> to save the current one!</span>
+    </div>
+
+    <div class="search-list-note"
+         data-selector="no-filter-search-results"
+         show.bind="filteredSearch && !filteredSearches.length">
+      No searches found
+    </div>
+      <div if.bind="horizontal">
+        <div class="row">
+          <div ref="sortableContainer" data-fromAll="${fromall}" data-subcategoryid="${catid}" style="min-height: 50px;">
+            <div class="col xl6 l12 s12 m12 search-item" repeat.for="search of searches" data-hash="${search.hash}" data-hashid="${search.hashId}">
+                <span class="search-title" click.delegate="openSavedSearch(search)">
+                    <a href="#">${search.title}</a>
+                    <span>${search.created | date}</span>
+                  </span>
+                  <action
+                    class="search-actions"
+                    categorysort.bind="true"
+                    search.bind="search"
+                    disable-delete.bind="disableDelete"
+                    tooltip-direction.bind="tooltipDirection"
+                    is-popular="isPopular"
+                    parentid.bind="parentid"
+                  ></action>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="search-list-items" ref="scrollArea" show.bind="!horizontal">
+          <div class="search-item" repeat.for="search of filteredSearches" show.bind="filteredSearch">
+            <span class="search-title" click.delegate="openSavedSearch(search)">
+              <a href="#">${search.title}</a>
+              <span>${search.created | date}</span>
+            </span>
+            <action class="search-actions" search.bind="search" disable-delete.bind="disableDelete" tooltip-direction.bind="tooltipDirection"></action>
+          </div>
+
+          <div class="search-item" repeat.for="search of searches" show.bind="!filteredSearch">
+            <span class="search-title" data-selector="saved-search-title" click.delegate="openSavedSearch(search)">
+              <a href="#">${search.title}</a>
+              <span>${search.created | date}</span>
+            </span>
+            <action class="search-actions" search.bind="search" disable-delete.bind="disableDelete" tooltip-direction.bind="tooltipDirection"></action>
+          </div>
+        </div>
+  </div>
+</div>
+</template>

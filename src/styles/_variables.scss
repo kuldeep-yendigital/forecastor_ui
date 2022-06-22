@@ -1,0 +1,33 @@
+@import "colors";
+
+/* All materialize variables in node_modules/materialize-css/sass/components/_variables.scss */
+
+// Typography (from https://projects.invisionapp.com/d/main#/console/9787794/249811688/inspect)
+
+$font-size-base: 16px;    // 1rem
+$h1-fontsize: 1.75rem;   // 28px
+$h2-fontsize: 1.5rem;    // 24px
+$h3-fontsize: 1.25rem;   // 20px
+$h4-fontsize: 1.125rem;  // 18px
+
+// Media Query Ranges
+$small-screen-up: 601px;
+$medium-screen-up: 993px;
+$large-screen-up: 1201px;
+$small-screen: 600px;
+$medium-screen: 992px;
+$large-screen: 1200px;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})";
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})";
+$extra-large-and-up: "only screen and (min-width : #{$large-screen-up})";
+$small-and-down: "only screen and (max-width : #{$small-screen})";
+$medium-and-down: "only screen and (max-width : #{$medium-screen})";
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})";
+
+
+// Grid (static pages)
+$num-cols: 12;
+$gutter-width: 1.5rem;
+$element-top-margin: $gutter-width/3;
+$element-bottom-margin: ($gutter-width*2)/3;

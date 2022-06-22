@@ -1,0 +1,52 @@
+/*
+colour palette from "Informa digital guidelines"
+https://itmebusiness.atlassian.net/secure/attachment/68369/144702_INFORMA_DIGITAL_GUIDELINES_017.pdf
+*/
+
+$white: #fff;
+$near-white: #f3f4f5;
+$black: #000;
+
+$pale-blue: #E5F4FF;
+
+//$component--primary-tmt: rgb(115, 26, 237);
+$component--primary-tmt: rgb(165,78,172);
+$component--old-red: #db0a35;
+//$component--primary-tmt-ooooooold: #db0a35;
+$component--grey-00: #292c35; // not in guideline, added by @jeffrey.cook
+$component--grey-01: #343742;
+$component--grey-02: #3c404c;
+$component--grey-03: #444957;
+$component--grey-04: #565c6b;
+$component--grey-05: #6a7285;
+$component--grey-06: #888e9e;
+$component--grey-07: #a6aab6;
+$component--grey-08: #c3c7cf;
+$component--grey-09: #e1e3e7;
+$component--grey-10: #f0f1f3;
+$component--grey-11: #f6f6f7;
+
+$component--transition-duration: 200ms;
+$component--transition-easing: ease-in-out;
+
+$component--radio--disabled--opacity: 0.36;
+$component--opacity-white-0_3: rgba(
+  red($white),
+  green($white),
+  blue($white),
+  0.3);
+$component--opacity-grey-09-0_0: rgba(
+  red($component--grey-09),
+  green($component--grey-09),
+  blue($component--grey-09),
+  0);
+$component--opacity-grey-00-0_8: rgba(
+  red($component--grey-00),
+  green($component--grey-00),
+  blue($component--grey-00),
+  0.8);
+
+  .forecaster-primary-color,
+  .progress .indeterminate.forecaster-primary-color {
+    background: $component--primary-tmt;
+  }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Omdia Forecaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script type="text/javascript" src="settings.js"></script>
+
+  <script>
+    if (window.config.includeFullStory) {
+      const script = document.createElement('script');
+      script.src = "assets/lib/fullstory.js";
+      script.type = "text/javascript"
+      document.getElementsByTagName("HEAD")[0].appendChild(script);
+    }
+  </script>
+
+  <script async type="text/javascript" src="assets/lib/intercom.js"></script>
+</head>
+
+<body>
+  <div style="width:100%;height:100%" aurelia-app="main" data-selector="forecaster-app">
+    <noscript>
+      <div class="noscript-message">
+        <p>Javascript is disabled on your browser. Please enable Javascript to use full functionality of this site.</p>
+        <p>
+          <a rel="nofollow" target="_blank" href="http://www.enable-javascript.com/">How to enable JavaScript in your browser?</a>
+        </p>
+      </div>
+    </noscript>
+  </div>
+
+  <div id="tour-mask">
+    <div id="tour-highlight"></div>
+  </div>
+
+</body>
+
+</html>

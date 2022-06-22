@@ -1,0 +1,13 @@
+<template class="active-filter" data-selector="active-filter">
+  <require from="./child"></require>
+  <div class="active-filter-search">
+    <input type="text" placeholder="Search filters" value.bind="search" change.delegate="searchChanged()" data-selector="search"/>
+  </div>
+  <div class="active-filter-list">
+    <ul>
+      <li repeat.for="dimension of dimensions">
+        <child id="${$index}" item.bind="dimension" select.bind="selection[$index]" on-toggle.bind="onToggle"></child>
+      </li>
+    </ul>
+  </div>
+</template>

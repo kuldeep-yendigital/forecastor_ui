@@ -1,0 +1,39 @@
+.loading-panel {
+  z-index: 1;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 256px;
+  margin: auto 0;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  .text {
+    height: 50px;
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: 100;
+  }
+
+  @-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+  }
+
+  .material-icons {
+    cursor: pointer;
+    text-align: center;
+
+    display: block;
+    -webkit-animation: fadeIn 20s;
+    animation: fadeIn 20s;
+  }
+}

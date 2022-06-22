@@ -1,0 +1,10 @@
+<template>
+  <div class="tooltip" if.bind="text">
+    <span class="icon" click.trigger="toggle($event)"><i class="material-icons info"></i></span>
+    <div ref="content" class="content ${placement} ${arrowDirection}-arrow" show.bind="expanded">
+      <p>
+        ${text}
+      </p>
+    </div>
+  </div>
+</template>

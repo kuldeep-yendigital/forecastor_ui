@@ -1,0 +1,20 @@
+<template>
+  <div class="date-selector">
+    <label>${dateLabel}</label>
+    <div>
+      <div if.bind="interval === 'quarterly'" containerless>
+        <select class="quarter" value.bind="quarter" change.trigger="quarterChanged($event)" ref="quarterEl">
+          <option model.bind="1" value="Q1">Q1</option>
+          <option model.bind="2" value="Q2">Q2</option>
+          <option model.bind="3" value="Q3">Q3</option>
+          <option model.bind="4" value="Q4">Q4</option>
+        </select>
+      </div>
+
+      <select class="year" value.bind="year" change.trigger="yearChanged($event)" ref="yearEl"
+              data-selector="date-selector-year-${dateLabel}">
+        <option repeat.for="year of availableYears" model.bind="year" value="${year}">${year}</option>
+      </select>
+    </div>
+  </div>
+</template>

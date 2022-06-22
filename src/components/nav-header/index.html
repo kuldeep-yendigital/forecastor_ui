@@ -1,0 +1,54 @@
+<template>
+  <header class="tool-name-header"
+          data-selector="forecaster-header">
+    <span click.trigger="router.navigateTo.dashboard()">Forecaster</span>
+
+    <div class="menu-items-container">
+      <div
+        class="navigate"
+        data-selector="navigate-${isGrid ? 'dashboard' : 'grid'}"
+        click.trigger="isGrid ? router.navigateTo.dashboard() : router.navigateTo.grid()"
+      >
+        <i class="material-icons ${isGrid ? 'icon-dashboard' : 'grid_on'}"></i>
+        <span>${isGrid ? 'To dashboard' : 'To data view'}</span>
+      </div>
+
+      <div class="user-details" data-selector="user-details" show.bind="authStore.data.user"
+           click.trigger="showMenu = !showMenu" class.bind="showMenu ? 'highlighted' : ''">
+        <i class="material-icons account_circle"></i>
+
+        <span>${authStore.data.user.name}</span>
+
+        <div show.bind="showMenu" class="highlighted" data-selector="dashboard" click.trigger="router.navigateTo.dashboard()">
+          <a href="#">Dashboard</a>
+        </div>
+
+<!--        <div show.bind="showMenu" class="highlighted" data-selector="change-password" click.trigger="router.navigateTo.passwordChange()">-->
+<!--          <a href="#">Change Password</a>-->
+<!--        </div>-->
+
+        <div show.bind="showMenu" class="highlighted" data-selector="help" click.trigger="router.navigateTo.help()">
+          <a href="#">Help</a>
+        </div>
+
+        <!-- <div show.bind="showMenu" class="highlighted" data-selector="start-welcome-tour" click.trigger="router.navigateTo.dashboard({ tour: 'start' })">
+          <a href="#">Start welcome tour</a>
+        </div> -->
+
+        <div show.bind="showMenu" class="highlighted" data-selector="data-methodology" click.trigger="router.navigateTo.dataMethodology()">
+          <a href="#">Data methodology</a>
+        </div>
+
+        <div show.bind="showMenu" class="highlighted" data-selector="other-data-tools" click.trigger="router.navigateTo.otherDataTools()">
+          <a href="#">Other Data Tools</a>
+        </div>
+
+        <div show.bind="showMenu" class="highlighted" click.trigger="logout()">
+          <span href="#" data-selector="logout" >
+            Sign out
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>

@@ -1,0 +1,17 @@
+@import "../../styles/colors";
+
+.dashboard-slot-empty {
+  color: $component--grey-04;
+  border: 2px dashed $component--grey-10;
+  border-radius: 1em;
+  text-align: center;
+
+  h3 {
+    color: $component--grey-06;
+  }
+
+  p {
+    max-height: 6em;
+    overflow: auto;
+  }
+}

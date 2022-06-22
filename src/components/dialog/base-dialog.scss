@@ -1,0 +1,22 @@
+@import "../../styles/colors";
+
+ux-dialog-overlay {
+  overflow: hidden !important;
+
+  &.active {
+    background-color: $component--opacity-grey-00-0_8;
+  }
+}
+
+ux-dialog-container {
+  overflow: hidden !important;
+
+  ux-dialog {
+    border-radius: 0 !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) !important;
+
+    ux-dialog-header {
+      border-bottom: 2px solid $component--grey-09;
+    }
+  }
+}

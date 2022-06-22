@@ -1,0 +1,28 @@
+<template>
+  <span class="sort-column sort-column--sortable-true">
+    <span class="column-name ${isFiltered ? 'filtered' : ''}" data-selector="column-name">${columnLabel}</span>
+    <i class="sort-icon material-icons ${sortState == 'asc' ? 'arrow_upward' : 'arrow_downward'}" show.bind="sortState" data-selector="sort-indicator ${sortState}">
+    </i>
+  </span>
+  <require from="../context-menu/index"></require>
+
+  <context-menu
+    column-type.bind="columnType"
+    is-aggregable.bind="aggregable"
+    is-pinnable.bind="pinnable"
+    is-sortable.bind="sortable"
+    is-moveable-left.bind="moveableLeft"
+    is-moveable-right.bind="moveableRight"
+    on-move-left.call="onMoveLeft($event)"
+    on-move-right.call="onMoveRight($event)"
+    on-remove.call="onRemove($event)"
+    on-pin.call="onPin($event)"
+    on-remove.call="onRemove($event)"
+    on-sort.call="onSort($event)"
+    on-unpin.call="onUnpin($event)"
+    column-ref.bind="columnId"
+    containerless>
+  </context-menu>
+
+  <div class="sizer"></div>
+</template>

@@ -1,0 +1,113 @@
+<template>
+    <div class="body-wrapper">
+        <require from="../../components/cookie-banner/index"></require>
+        <require from="../../components/saved-searches/index"></require>
+        <require from="../../components/saved-searches-list/index"></require>
+        <require from="../../components/nav-header/index"></require>
+        <require from="../../components/snackbar/index"></require>
+        <require from="../../components/products/index"></require>
+        <require from="../../components/dashboard-slots/index"></require>
+        <require from="../page-footer/page-footer"></require>
+        <section class="main-container scroll-container">
+            <cookie-banner></cookie-banner>
+            <nav-header containerless no-sub-headr="true"></nav-header>
+
+                <div class="dashboard" data-selector="dashboard">
+                  <div class="dashboard-banner">
+                    <div class="content" data-selector="welcome-message">
+                      <h2>Welcome to Omdia Forecaster!</h2>
+                      <p>Welcome to the Omdia Forecaster. From here you can view previously saved graphs and charts, quickly access your saved searches, as well as view other popular searches.</p>
+                      <!-- <a class="waves-effect waves-light btn" href="#" click.trigger="tour()" data-selector="tour">Take the tour</a>
+                      <span style="margin: 0 25px;">or</span> -->
+                      <a class="waves-effect waves-light btn" href="#" click.trigger="router.navigateTo.grid()" data-selector="navigate-grid">Build a data view</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row dashboard-content">
+                    <div class="row new-pop">
+                        <div class="col m1 l1"></div>
+<!--                        <div class="col l3 s3 m3">-->
+<!--                            <div class="category-title">Popular Searches</div>-->
+<!--                            <ul class="category-selector" id="category-list">-->
+<!--                                <template repeat.for="item of data.bookmarks.categories">-->
+<!--                                    <li-->
+<!--                                    if.bind="item.isEnabled"-->
+<!--                                    data-categoryId="${item.id}"-->
+<!--                                    class="${activecategory === item.id ? 'active' : ''} withLink"-->
+<!--                                    click.trigger="navigateSubcategory(item)">-->
+<!--                                    <div>-->
+<!--                                        <a href="#" class="${!item.isEnabled ? 'disabled' : ''}">${item.title}</a>-->
+<!--                                        <a if.bind="isAdmin" class="material-icons delete delete-category" click.trigger="deleteCategory(item)" href="#"></a>-->
+<!--                                        <a if.bind="isAdmin" class="material-icons mode_edit edit-category" click.trigger="editCategory(item)" href="#"></a>-->
+<!--                                    </div>-->
+<!--                                    </li>-->
+<!--                                </template>-->
+<!--                                <template repeat.for="item of data.bookmarks.categories">-->
+<!--                                    <li-->
+<!--                                    if.bind="!item.isEnabled"-->
+<!--                                    data-categoryId="${item.id}"-->
+<!--                                    class="${activecategory === item.id ? 'active' : ''} withoutLink">-->
+<!--                                        <div>-->
+<!--                                            <a href="#" class="${!item.isEnabled ? 'disabled' : ''}">${item.title}</a>-->
+<!--                                            <a if.bind="isAdmin" class="material-icons delete delete-category" click.trigger="deleteCategory(item)" href="#"></a>-->
+<!--                                            <a if.bind="isAdmin" class="material-icons mode_edit edit-category" click.trigger="editCategory(item)" href="#"></a>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                </template>-->
+<!--                            </ul>-->
+<!--                            <div>-->
+<!--                                <a if.bind="isAdmin" class="material-icons playlist_add add-icon" click.trigger="addCategory()" href="#"></a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col l7 m7 s7">-->
+<!--                            <saved-searches-list-->
+<!--                                admin.bind="isAdmin"-->
+<!--                                data.bind="data.bookmarks.subcategories"-->
+<!--                                allbookmarks.bind="data.bookmarks.saved"      -->
+<!--                                parentid.bind="activecategory"-->
+<!--                             />-->
+<!--                        </div>-->
+                    </div>
+
+
+                    <div class="col m1 l1"></div>
+                    <div class="col s12 m6 l6">
+                        <dashboard-slots/>
+                    </div>
+
+                    <div class="col s12 m4 l4">
+                        <div class="row">
+                            <div class="saved-search-container" ref="popularContainer">
+                                <saved-searches title="My saved searches"
+                                        data-selector="saved-searches"
+                                        display-filter.bind="false"
+                                        display-save-current-search-message.bind="false"
+                                        searches.bind="data.bookmarks.saved"
+                                        is-fetching.bind="data.bookmarks.saved.isLoading"
+                                        on-search-click.bind="open"
+                                        tooltip-direction="left">
+                                    <saved-searches>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="product-container" show.bind="showSubscriptions()">
+                                <products
+                                  title="My Forecaster Subscriptions"
+                                  is-fetching.bind="data.products.isLoading"
+                                  products.bind="toUniqueRankedProductList(data.products.suites)"
+                                ><products>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col m1 l1"></div>
+                </div>
+                <pagefooter></pagefooter>
+            </div>
+
+            <snackbar></snackbar>
+        </section>
+    </div>
+
+</template>

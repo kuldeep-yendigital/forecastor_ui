@@ -1,0 +1,84 @@
+@import "./../../styles/colors";
+
+  .loading-panel {
+    padding: 0;
+    width: 100%;
+    position: relative;
+    margin-top: 55px;
+  }
+
+  .search-list {
+    overflow: hidden;
+
+    .search-list-title {
+      font-weight: 600;
+      padding: 15px 25px;
+    }
+
+    .search-list-note {
+      padding: 15px 25px;
+
+      a {
+        color: $component--primary-tmt;
+      }
+    }
+
+    .search-list-items {
+      height: 85%;
+      overflow-y: scroll;
+    }
+
+    .search-item {
+      display: table;
+      table-layout: fixed;
+      padding: 10px 18px 10px 25px;
+      width: 100%;
+
+      &:hover {
+        background-color: $component--grey-10;
+      }
+
+      .search-title {
+        color: $component--grey-04;
+        display: table-cell;
+        overflow: hidden;
+        padding-right: 10px;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        white-space: nowrap;
+        width: 80%;
+
+        a {
+          color: $component--grey-04;
+
+          &:hover {
+            color: $component--primary-tmt;
+          }
+        }
+
+        span {
+          color: $component--grey-08;
+          display: block;
+          font-size: 12px;
+        }
+      }
+
+      .search-actions {
+        display: table-cell;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 20%;
+      }
+    }
+  }
+
+  .search-list-header {
+    position: relative;
+    & * { display: inline-block; }
+
+    input {
+      width: 200px !important;
+      height: 20px !important;
+      margin: 0 0 0 60px !important;
+    }
+  }

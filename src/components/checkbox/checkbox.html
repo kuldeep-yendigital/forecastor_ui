@@ -1,0 +1,11 @@
+<template>
+  <span class="checkbox">
+    <input id="${selector}" class="filled-in" type="checkbox" disabled.bind="readOnly"
+      checked.bind="select.checked" change.delegate="triggerCallback()" if.bind="!oneWay" />
+
+      <input id="${selector}" class="filled-in" type="checkbox" disabled.bind="readOnly"
+        checked.one-way="select.checked" change.delegate="triggerCallback()" if.bind="oneWay" />
+
+    <label for="${selector}" class="${select.indeterminate ? 'state-indeterminate' : ''}">${text}</label>
+  </span>
+</template>

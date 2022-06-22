@@ -1,0 +1,17 @@
+<template>
+  <ux-dialog class="component-dialog-confirm" style="width: ${model.width}px;">
+
+    <ux-dialog-body>
+      <div repeat.for="input of model.inputs">
+        ${input.text}
+        <input type="text" placeholder="Enter..." value.bind="input.value" autofocus="true" minlength="1" maxlength="128" required="true" data-selector="save-input-text">
+      </div>
+
+    </ux-dialog-body>
+
+    <ux-dialog-footer>
+      <a class="btn btn-flat confirm-reset-btn" click.trigger="controller.cancel()" href="#">${model.reset}</a>
+      <a class="btn btn-flat confirm-submit-btn" click.delegate="submit()" href="#">${model.submit}</a>
+    </ux-dialog-footer>
+  </ux-dialog>
+</template>

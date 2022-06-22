@@ -1,0 +1,218 @@
+.footer__wrapper {
+  margin: 0 auto;
+  max-width: 100%;
+  background-color: #454955;
+
+  footer {
+    background-color: #454955;
+    margin-left: auto;
+    margin-right: auto;
+
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .divisional-footer {
+      max-width: 1400px;
+      margin: 0 auto;
+      overflow-x: unset;
+      background-color: #454955;
+
+      .divisional-footer-container {
+        .bottom-menus {
+          display: table;
+          width: 100%;
+          padding: 35px 0;
+          font-size: 0;
+          border-bottom: 1px solid #fff;
+          border-top: 1px solid #fff;
+          margin-top: 35px;
+
+          .menu-section {
+            text-align: right;
+            margin-top: 10px;
+          }
+
+          li {
+            padding: 10px 15px 10px 0;
+            display: inline-block;
+          }
+
+          a {
+            color: #fff;
+            font-size: 14px;
+          }
+
+          .logo {
+            padding-left: 0;
+            padding-right: 0;
+            float: left;
+          }
+        }
+
+        .privacy-policy {
+          font-size: 14px;
+          text-align: right;
+          font-weight: normal;
+          padding: 35px 15px;
+
+          p {
+            color: #fff;
+            font-size: 14px;
+
+            &:before {
+              display: none;
+            }
+          }
+
+          .col-md-12 {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+
+        .footer-icons {
+          font-size: 0;
+          padding: 35px 0;
+          border-bottom: 1px solid #fff;
+          max-width: 1200px;
+        }
+
+        .alternate-menus {
+          overflow: hidden;
+          padding: 0 30px;
+
+          .menu-section {
+            display: table-cell;
+            vertical-align: top;
+            width: 32.5%;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            .list-inline {
+              li {
+                width: 100%;
+                display: inline-block;
+                font-size: 16px;
+                font-size: 1rem;
+                padding: 10px 15px 10px 0;
+                word-break: break-word;
+
+                .mobile-table-exit,
+                .pop-out__reset-password,
+                .sortable-table__list-toggler,
+                a
+                {
+                  color: #fff;
+                  font-size: 14px;
+                }
+              }
+            }
+
+            &.social-icons {
+              position: relative;
+              width: 35%;
+              float: none;
+
+              li {
+                display: inline-block;
+                vertical-align: middle;
+                width: auto;
+                font-size: 1rem;
+                padding-right: 15px;
+                margin-left: 12.5px;
+                margin-right: 12.5px;
+
+                a {
+                  width: 35px;
+                  display: -webkit-box;
+                  display: -ms-flexbox;
+                  display: flex;
+                  height: 35px;
+                  border-radius: 35px;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  align-items: center;
+                  -webkit-box-pack: center;
+                  -ms-flex-pack: center;
+                  justify-content: center;
+                  font-size: 8px;
+                  color: #525a5d;
+                  text-decoration: none;
+                  cursor: pointer;
+
+                  i {
+                    width: 100%;
+                    height: 100%;
+                    background-size: cover;
+                  }
+
+                  .fa-facebook-f {
+                    background-image: url(../../../resources/social/Social-FB-RETINA.png);
+                  }
+                  
+                  .fa-linkedin-in {
+                    background-image: url(../../../resources/social/Social-LI-RETINA.png);
+                  }
+                  
+                  .fa-rss {
+                    background-image: url(../../../resources/social/Social-RSS-RETINA.png);
+                  }
+                  
+                  .fa-twitter {
+                    background-image: url(../../../resources/social/Social-Twitter-RETINA.png);
+                  }
+                  
+                  .fa-youtube {
+                    background-image: url(../../../resources/social/Social-YouTube-RETINA.png);
+                  }
+                }
+              }
+            }
+
+            &:last-child {
+              padding-right: 0;
+            }
+          }
+          
+          .menu-section.long-list {
+            width: 40%;
+
+            .list-inline {
+              overflow: hidden;
+              font-size: 0;
+
+              li {
+                float: left;
+                width: 50%;
+              }
+            }
+          }
+
+          .menu-section:first-child {
+            padding-left: 0;
+          }
+        }
+
+        .heading {
+          font-size: 14px;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #fff;
+          padding: 35px 0 25px;
+        }
+
+        &:nth-child(2) {
+          margin-top: 50px;
+          border-top: 1px solid #fff;
+        }
+      }
+
+      .row {
+        margin: 0 auto;
+      }
+    }
+  }
+} 

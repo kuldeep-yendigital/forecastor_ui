@@ -1,0 +1,37 @@
+<template>
+  <require from="../../value-converters/from-camel-case-formatter"></require>
+
+  <nav class="search-ribbon ${viewMode.toLowerCase()} ${openSubMenu ? 'open' : ''}" ref="searchRibbonElement"
+       data-selector="search-ribbon">
+    <div class="search-ribbon-inner">
+      <div class="disable-overlay" show.bind="disabled"></div>
+      <header class="header">
+        <img alt="Omdia Forecaster" class="logo-text" data-selector="title-text"
+             src="../../../resources/OMDIA-logo-RETINA.png"/>
+        <img alt="Omdia Forecaster" class="logo" data-selector="title-logo"
+             src="../../../resources/OMDIA-favicon-400.png"/>
+      </header>
+      <div class="filters">
+        <ul>
+          <li
+            repeat.for="dimension of dimensions"
+            data-selector="taxonomy-item ${dimension.name.toLowerCase()}"
+            click.trigger="onToggleSubMenu(dimension)"
+            class="${selectedDimensions.indexOf(dimension.name.toLowerCase()) > -1 ? 'selected' : '' } ${panelData.dimension === dimension.name ? 'current' : ''}"
+            title="${dimension.description}"
+              >
+              <span>${dimension.name | fromCamelCaseFormatter}</span>
+              <i class="material-icons icon-${dimension.name.toLowerCase()}"></i>
+          </li>
+        </ul>
+      </div>
+
+      <div class="toggleview-container" click.trigger="toggleView()">
+        <span class="label">Collapse filters</span>
+        <i class="material-icons" data-selector="collapse-btn"></i>
+      </div>
+    </div>
+    <require from="../panels/ribbon-panel/index"></require>
+    <div as-element="ribbon-panel" class="sub-panel" panel-data.bind="panelData" disabled.bind="disabled"></div>
+  </nav>
+</template>

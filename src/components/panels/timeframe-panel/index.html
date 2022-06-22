@@ -1,0 +1,34 @@
+<template>
+  <div class="timeframe-panel">
+    <header>
+      <require from="../../back-panel-button/index"></require>
+      <back-panel-button containerless></back-panel-button>
+      <h2>Timeframe</h2>
+    </header>
+
+    <section class="warning" if.bind="warnings" repeat.for="warning of warnings">
+      <p class="text">${warning}</p>
+    </section>
+
+    <section>
+      <require from="../../date-selector/index"></require>
+      <date-selector
+        date.bind="start"
+        date-label="From:"
+        interval.bind="interval"
+        name="start"
+      ></date-selector>
+      <date-selector
+        date.bind="end"
+        date-label="To:"
+        interval.bind="interval"
+        name="end"
+      ></date-selector>
+    </section>
+
+    <section>
+      <require from="../../interval-selector/index"></require>
+      <interval-selector selected-interval.bind="interval"></interval-selector>
+    </section>
+  </div>
+</template>

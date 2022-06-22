@@ -1,0 +1,29 @@
+{
+  "searches": [{
+      "created": "2017-10-12 10:15:00",
+      "title": "This is a saved search",
+      "description": "This is a description containing further information about the saved search.",
+      "query" : {}
+    }, {
+      "created": "2017-10-10 15:25:00",
+      "title": "This is a saved search with incredibly very very very very very long title",
+      "description": "This is a description containing further information about the saved search.",
+      "query" : {}
+    }, {
+      "created": "2017-09-11 15:30:00",
+      "title": "Top cellular providers in Latn America",
+      "description": "This is a description containing further information about the saved search.",
+      "query" : {}
+    }, {
+      "created": "2017-08-11 15:40:00",
+      "title": "Forecasted growth of OOT video",
+      "description": "This is a description containing further information about the saved search.",
+      "query" : {}
+    }, {
+      "created": "2017-01-11 15:50:00",
+      "title": "Another saved search",
+      "description": "This is a description containing further information about the saved search.",
+      "query" : {}
+    }
+  ]
+}

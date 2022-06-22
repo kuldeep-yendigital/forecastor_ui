@@ -1,0 +1,268 @@
+@import "../../styles/colors";
+
+.data-grids-container-wrapper {
+  position: relative;
+  height: 100%;
+
+}
+.data-grids-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.data-grid {
+  height: calc(100% - 2px);
+
+  .select-all.sizer {
+    height: 18px;
+  }
+
+  [type="checkbox"].filled-in:checked + label:after {
+    border: 2px solid $component--primary-tmt !important;
+    background-color: $component--primary-tmt !important;
+  }
+
+  [type="checkbox"]:checked + label:before {
+    border-right: 2px solid #fff !important;
+    border-bottom: 2px solid #fff !important;
+  }
+}
+
+.data-grid-heading {
+  overflow: hidden;
+
+  th,
+  td {
+    text-align: left;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+  tbody > tr {
+    height: 47px;
+    font-size: 12px;
+    border-top: $component--grey-10 1px solid;
+    border-bottom: $component--grey-10 1px solid;
+  }
+  tbody > tr.data-grid--highlighted-row {
+    background-color: $component--grey-10;
+  }
+  tr.data-grid--selected-row > td {
+    background-color: $pale-blue;
+  }
+  thead > tr {
+    color: $component--primary-tmt;
+    background-color: $near-white;
+    font-size: 14px;
+    height: 40px;
+    border-top: $component--grey-10 1px solid;
+    border-bottom: $component--grey-10 1px solid;
+  }
+  thead > tr:first-child {
+    height: 48px;
+    background-color: $component--grey-09;
+  }
+  thead > tr > th {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .header-row th {
+    font-weight: 400;
+  }
+
+  th {
+    white-space: nowrap;
+    padding: 0 0;
+  }
+
+  th.numeric,
+  th.percentage {
+    text-align: right;
+  }
+}
+
+.data-grid--loading {
+  position: relative;
+
+  .progress-indicator {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    background: white;
+    bottom: 100px;
+    left: 0;
+    padding: 20px 0 0;
+  }
+}
+
+.progress-indicator {
+  display: none;
+
+  &--cell {
+    position: absolute;
+    width: 100%;
+
+  }
+}
+
+.preloader-wrapper.small {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  margin: auto;
+  width: 27px;
+  height: 27px;
+}
+
+.data-grid-data {
+  width: 100%;
+  height: calc(100% - 193px);
+  overflow: auto;
+  background-color: $component--opacity-grey-09-0_0;
+  color: $component--grey-03;
+
+  .data-grid--table-parent {
+    min-height: 100%;
+    position: relative;
+  }
+
+  th,
+  td.non-numeric {
+    text-align: left;
+  }
+  td.numeric,
+  td.percentage {
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  td {
+    &.cell-black,
+    &.cell-real,
+    &.cell-restatement,
+    &.cell-un,
+    &.cell-imf,
+    &.cell.no-specific {
+      color: $black;
+    }
+    &.cell-blue,
+    &.cell-market-intelligence {
+      color: #1291d1;
+    }
+    &.cell-red,
+    &.cell-estimate,
+    &.cell-estimated,
+    &.cell-computed {
+      color: $component--old-red;
+    }
+    &.cell-green,
+    &.cell-forecast {
+      color: #5ab031;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+  tbody > tr {
+    height: 47px;
+    font-size: 12px;
+    border-top: $component--grey-10 1px solid;
+    border-bottom: $component--grey-10 1px solid;
+  }
+  tbody > tr.data-grid--highlighted-row {
+    background-color: $component--grey-10 !important;
+  }
+  tbody > tr.data-grid--selected-row {
+    background-color: $pale-blue;
+  }
+  thead > tr {
+    color: $component--primary-tmt;
+    background-color: $near-white;
+    font-size: 14px;
+    height: 40px;
+    border-top: $component--grey-10 1px solid;
+    border-bottom: $component--grey-10 1px solid;
+  }
+  thead > tr:first-child {
+    height: 48px;
+    background-color: $component--grey-09;
+  }
+  thead > tr > th {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  td {
+    padding-left: 0 !important;
+    min-width: 135px;
+  }
+  th {
+    white-space: nowrap;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.spacing-cell {
+  div {
+    width: 20px;
+  }
+}
+
+.message-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  font-size: 16px;
+  font-weight: 300;
+  max-width: 285px;
+}
+
+.pinned-data-grid {
+  border-right: 2px solid rgb(165,78,172);
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    -ms-overflow-style: none;
+}
+
+.unpinned-data-grid {
+  overflow: auto;
+  flex: auto;
+
+  th:last-child {
+    width: 10px;
+    padding-right: 124px !important;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/****************
+
+//Uncomment here to see row numbers in each cell (debug)
+
+table {
+  counter-reset: rowNumber;
+
+  tr {
+    counter-increment: rowNumber;
+
+    td:before {
+      color: blue;
+      content: counter(rowNumber);
+    }
+  }
+}
+
+*****************************/

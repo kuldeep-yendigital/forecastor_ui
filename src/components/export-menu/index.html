@@ -1,0 +1,18 @@
+<template>
+  <div class="menu-btn export-menu ${open ? 'open' : ''}" ref="root" data-selector="export">
+
+    <a data-selector="export-menu"
+      click.trigger="(!data.export.inProgress) && toggleOpenClose()"
+      class="${inLandingMode ? 'disabled' : (data.export.inProgress ? 'in-progress':'completed')}">
+      <i class="material-icons get_app"></i>
+      Export
+    </a>
+
+    <div class="menu" ref="menu">
+      <div class="list">
+        <div class="item" data-selector="export-excel" click.trigger="excel()">Excel</div>
+        <div class="item" data-selector="export-csv" click.trigger="csv()">CSV</div>
+      </div>
+    </div>
+  </div>
+</template>

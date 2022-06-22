@@ -1,0 +1,47 @@
+@import "./../../styles/colors";
+
+.product-list {
+  .product-list-title {
+    font-weight: 600;
+    padding: 15px 25px;
+  }
+
+  .product-list-note {
+    padding: 15px 25px;
+  }
+
+  .product-list-items {
+    height: 85%;
+    overflow-y: scroll;
+  }
+
+  .product-item {
+    display: table;
+    padding: 10px 18px 10px 25px;
+    width: 100%;
+
+    .product-title {
+      color: $component--grey-04;
+      display: table-cell;
+      max-width: 350px;
+      overflow: hidden;
+      padding-right: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+
+      &::before {
+        content: "\2022";
+        margin-right: 7px;
+      }
+    }
+  }
+}
+
+.product-list-header {
+  position: relative;
+
+  & * {
+    display: inline-block;
+  }
+}

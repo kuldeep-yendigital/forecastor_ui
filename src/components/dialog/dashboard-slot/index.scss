@@ -1,0 +1,15 @@
+@import '../../../styles/colors';
+
+.dashboard-slot-replace-dialog {
+  width: 30em;
+
+  [type="radio"].with-gap:checked {
+    + label:before,
+    + label:after {
+      border-color: $component--primary-tmt;
+    }
+    + label:after {
+      background-color: $component--primary-tmt;
+    }
+  }
+}

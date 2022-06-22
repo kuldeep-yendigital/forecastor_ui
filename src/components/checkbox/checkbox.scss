@@ -1,0 +1,20 @@
+@import "../../styles/colors";
+
+.checkbox {
+  [type="checkbox"].filled-in:not(:checked) + label.state-indeterminate:after {
+    border: 2px solid $component--primary-tmt;
+    background-color: $component--primary-tmt;
+  }
+
+  [type="checkbox"].filled-in:not(:checked) + label.state-indeterminate:before {
+    border: 1px solid $white;
+    border-radius: 0;
+    height: 0;
+    left: 0;
+    margin: 9px 4px;
+    top: 0;
+    transform: rotateZ(0deg);
+    width: 12px;
+    transition: none;
+  }
+}

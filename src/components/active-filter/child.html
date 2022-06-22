@@ -1,0 +1,12 @@
+<template>
+  <require from="../checkbox/checkbox"></require>
+  <div data-selector="${item.name}" class="${select.visible ? 'active-filter-child-visible' : 'active-filter-child-hidden'}">
+    <checkbox select.bind="select" selector="${id}" callback.call="toggle()"></checkbox>
+    <span>${item.name}</span>
+    <ul>
+      <li repeat.for="child of item.children">
+        <child id="${id}.${$index}" item.bind="child" select.bind="select.children[$index]" on-toggle.bind="onToggle"></child>
+      </li>
+    </ul>
+  </div>
+</template>

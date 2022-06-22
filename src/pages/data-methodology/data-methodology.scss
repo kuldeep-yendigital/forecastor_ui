@@ -1,0 +1,58 @@
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+.scroll-container {
+  overflow: auto !important;
+}
+
+.data-methodology {
+  background-color: $component--grey-11;
+  padding: 60px 120px;
+  overflow: auto;
+  font-weight: 300;
+}
+
+.data-methodology-title {
+  color: $component--grey-01;
+  font-size: 28px;
+  line-height: 31px;
+  margin: 0 0 40px 10px;
+}
+
+.card-title {
+  color: $component--primary-tmt;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.card {
+  a { color: $component--primary-tmt; }
+  margin: 35px;
+  min-height: 285px;
+  min-width: 298px;
+  background-color: $white;
+}
+
+.card-footer {
+  margin-top: 20px;
+  color: $component--primary-tmt;
+}
+
+.card-content {
+  padding: 25px;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@media #{$medium-and-down} {
+  .data-methodology {
+    padding: 0;
+  }
+
+  .data-methodology-title {
+    margin: 10px 15px;
+    font-size: large;
+  }
+}

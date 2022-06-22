@@ -1,0 +1,9 @@
+<template bindable="text">
+  <div class="loading-panel">
+    <div class="text" if.bind="text">${text}</div>
+    <div class="progress white">
+    <div class="indeterminate forecaster-primary-color"></div>
+  </div>
+  <i class="material-icons replay" click.delegate="click($event)"></i>
+  </div>
+</template>

@@ -1,0 +1,14 @@
+<template>
+  <require from="./context-menu"></require>
+  <div class="dashboard-slot dashboard-slot-graph" title="${item.description}">
+    <context-menu on-delete.call="delete()"></context-menu>
+    <div class="dashboard-slot-title">
+      <div>
+        <h3>
+          <span title="${item.title}">${item.title}</span>
+        </h3>
+      </div>
+    </div>
+    <div ref="canvas" class="canvas" data-selector="visualisation-canvas"></div>
+  </div>
+</template>

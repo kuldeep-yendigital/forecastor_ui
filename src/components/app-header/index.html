@@ -1,0 +1,108 @@
+<template>
+
+  <div class="sub-header">
+    <div class="sub-header__inner">
+      <require from="../column-selector/index"></require>
+      <require from="../export-menu/index"></require>
+      <require from="../currency-menu/index.jsx"></require>
+
+      <div class="sub-header__right">
+        <div class="menu-btn" if.bind="view === 'data-grid'">
+          <a click.trigger="goBack()"
+            data-selector="go-back-menu-button"
+            href="#"
+            class="${(historyCounter > 0 && historyIndex > 0 || inLandingMode === false) ? '' : 'disabled'}">
+            <i class="material-icons undo"></i>
+          </a>
+        </div>
+        <div class="menu-btn" if.bind="view === 'data-grid'">
+          <a click.trigger="goForward()"
+            data-selector="go-forward-menu-button"
+            href="#"
+            class="${(historyCounter === historyIndex || inLandingMode) ? 'disabled' : ''}">
+            <i class="material-icons redo"></i>
+          </a>
+        </div>
+
+        <div class="menu-btn" if.bind="view === 'data-grid'">
+          <a click.trigger="saveSearch()"
+            data-selector="save-search-menu-button"
+            class="${inLandingMode ? 'disabled' : ''}"
+            href="#">
+            <i class="material-icons star"></i>Save/Share
+          </a>
+        </div>
+
+        <div class="menu-btn show-reset-confirmation-button" if.bind="view === 'data-grid'">
+          <a data-selector="show-reset-confirmation-button" href="#" click.trigger="handleClickResetConfirmation()"
+            class="${inLandingMode ? 'disabled' : ''}">
+            <i class="material-icons refresh"></i>Restore defaults
+          </a>
+        </div>
+
+        <column-selector if.bind="view === 'data-grid'" in-landing-mode.bind="inLandingMode"></column-selector>
+        <export-menu if.bind="view === 'data-grid'" in-landing-mode.bind="inLandingMode"></export-menu>
+
+    </div>
+
+    <div class="sub-header__left">
+
+      <div class="clear" if.bind="numberOfSelectRecords > 0 && view === 'data-grid'">
+        <a href="#" click.trigger="clear($event)" data-selector="row-selection">
+          <i class="material-icons"></i>${numberOfSelectRecords} selected
+        </a>
+      </div>
+
+      <div class="back" if.bind="view === 'visualisation'">
+        <a href="#" click.trigger="back()">
+          <i class="material-icons"></i>${numberOfSelectRecords} selected
+        </a>
+      </div>
+
+      <div class="menu-btn left" if.bind="view === 'visualisation'">
+        <a click.trigger="saveGraphToDashboard()"
+          data-selector="save-graph-menu-button"
+          href="#">
+          Save to dashboard
+        </a>
+      </div>
+
+      <div class="back" if.bind="view === 'active-filter'">
+        <a href="#" click.trigger="backFromActiveFilter()">
+          <i class="material-icons"></i>Cancel
+        </a>
+      </div>
+
+      <div class="menu-btn left apply-filter-change" if.bind="view === 'active-filter'">
+        <a href="#" click.trigger="applyActiveFilterChanges()">
+          Apply<i class="material-icons check"></i>
+        </a>
+      </div>
+
+      <div class="chart" if.bind="numberOfSelectRecords > 0 && view === 'data-grid'">
+        <a href="#" class="graph" click.trigger="displayVisualisation('line')" data-selector="show-chart-button">
+          <i class="material-icons show_chart"></i>
+        </a>
+        <a href="#" class="insert-chart" click.trigger="displayVisualisation('bar')" data-selector="insert-chart-button">
+          <i class="material-icons chart-bar"></i>
+        </a>
+        <a href="#" class="bubble-chart" click.trigger="displayVisualisation('marker')" data-selector="bubble-chart-button">
+          <i class="material-icons bubble_chart"></i>
+        </a>
+      </div>
+
+      <div class="menu-btn show-active-filter-button" if.bind="view === 'data-grid'">
+        <a data-selector="show-active-filter-button" href="#" click.trigger="displayActiveFilter()"
+          class="${inLandingMode ? 'disabled' : ''}">
+          <i class="material-icons filter_list"></i>Search filters
+        </a>
+      </div>
+      <div class="menu-btn show-active-filter-button" if.bind="view === 'data-grid'">
+        <currency-menu
+          props.bind="{ changeValueField: changeValueField, currency: valueField, disabled: inLandingMode }"></currency-menu>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</template>

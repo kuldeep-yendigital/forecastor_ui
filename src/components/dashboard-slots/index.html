@@ -1,0 +1,13 @@
+<template>
+  <require from="./slot"></require>
+  <require from="./empty"></require>
+  <div class="dashboard-slots row">
+    <h2>My Graphs</h2>
+    <div class="col s12 m12 l6" repeat.for="item of slots">
+      <dashboard-slot index.bind="$index" item.bind="item" exportable.bind="exportable"/>
+    </div>
+    <div class="col s12 m12 l6" repeat.for="index of emptySlots">
+      <empty-dashboard-slot/>
+    </div>
+  </div>
+</template>

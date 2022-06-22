@@ -1,0 +1,12 @@
+<template>
+  <div class="context-menu">
+    <span class="ellipsis" click.delegate="toggleState()"></span>
+    <div class="menu ${open ? 'open' : ''}">
+      <ul>
+        <li click.delegate="delete()">
+          <i class="material-icons delete"></i> Delete
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
